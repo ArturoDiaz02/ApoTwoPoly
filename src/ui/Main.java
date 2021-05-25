@@ -31,7 +31,7 @@ public class Main extends Application{
         stage.setTitle("ApoTwoPoly");
         stage.show();
 		gui.setLocalStage(stage);
-        //
+      
     }
 
     @Override
