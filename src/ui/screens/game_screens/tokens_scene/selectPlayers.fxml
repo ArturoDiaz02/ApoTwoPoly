@@ -54,14 +54,14 @@
             <Image url="@rectc3a1ngulo2.jpg" />
          </image>
       </ImageView>
-      <CheckBox layoutX="152.0" layoutY="47.0" mnemonicParsing="false" />
-      <CheckBox layoutX="152.0" layoutY="149.0" mnemonicParsing="false" />
-      <CheckBox layoutX="152.0" layoutY="249.0" mnemonicParsing="false" />
-      <CheckBox layoutX="152.0" layoutY="345.0" mnemonicParsing="false" />
-      <CheckBox layoutX="556.0" layoutY="47.0" mnemonicParsing="false" />
-      <CheckBox layoutX="556.0" layoutY="149.0" mnemonicParsing="false" />
-      <CheckBox layoutX="556.0" layoutY="249.0" mnemonicParsing="false" />
-      <CheckBox layoutX="556.0" layoutY="345.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkBoat" layoutX="152.0" layoutY="47.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkBox" layoutX="152.0" layoutY="149.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkCar" layoutX="152.0" layoutY="249.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkCat" layoutX="152.0" layoutY="345.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkDog" layoutX="556.0" layoutY="47.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkHat" layoutX="556.0" layoutY="149.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkHole" layoutX="556.0" layoutY="249.0" mnemonicParsing="false" />
+      <CheckBox fx:id="checkShoes" layoutX="556.0" layoutY="345.0" mnemonicParsing="false" />
       <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="55.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@tokens/boat.png" />

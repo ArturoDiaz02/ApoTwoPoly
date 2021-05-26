@@ -20,7 +20,7 @@
             <Image url="@backgraund.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="964.0" fitWidth="950.0" layoutX="28.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="964.0" fitWidth="950.0" layoutX="28.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
             <Image url="@board.jpg" />
          </image>
@@ -41,7 +41,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="paneBoat" disable="true" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -72,7 +72,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Pane fx:id="paneBox" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
                   <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -103,7 +103,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <Pane fx:id="paneCar" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
                   <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -134,7 +134,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <Pane fx:id="paneCat" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
                   <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -165,7 +165,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+            <Pane fx:id="paneDog" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
                   <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -196,7 +196,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+            <Pane fx:id="paneHat" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                <children>
                   <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -227,7 +227,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+            <Pane fx:id="paneHole" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
                <children>
                   <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -258,7 +258,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
+            <Pane fx:id="paneShoes" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
                <children>
                   <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -301,7 +301,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="1093.0" layoutY="338.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="253.0" text="Tirar Dado">
+      <Button layoutX="1093.0" layoutY="338.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="89.0" prefWidth="253.0" text="Tirar Dado">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -310,11 +310,6 @@
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></TextArea>
-      <ImageView fitHeight="67.0" fitWidth="39.0" layoutX="915.0" layoutY="918.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@tokens/shoes.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="148.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@house.png" />
@@ -335,5 +330,13 @@
             <Image url="@house.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="tokenHat" fitHeight="54.0" fitWidth="49.0" layoutX="851.0" layoutY="936.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="tokenShoes" fitHeight="54.0" fitWidth="49.0" layoutX="933.0" layoutY="922.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="tokenHole" fitHeight="54.0" fitWidth="49.0" layoutX="895.0" layoutY="922.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="tokenBox" fitHeight="54.0" fitWidth="49.0" layoutX="856.0" layoutY="904.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="tokenCar" fitHeight="54.0" fitWidth="49.0" layoutX="931.0" layoutY="891.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="tokenBoat" fitHeight="54.0" fitWidth="49.0" layoutX="849.0" layoutY="843.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="tokenDog" fitHeight="54.0" fitWidth="49.0" layoutX="929.0" layoutY="848.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="tokenCat" fitHeight="54.0" fitWidth="49.0" layoutX="890.0" layoutY="844.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

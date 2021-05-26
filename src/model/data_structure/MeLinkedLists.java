@@ -1,6 +1,7 @@
 package model.data_structure;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MeLinkedLists<E> implements Serializable {
 
@@ -122,6 +123,18 @@ public class MeLinkedLists<E> implements Serializable {
         }
 
         size -= 1;
+    }
+
+    public ArrayList<E> toArray(){
+        ArrayList<E> array = new ArrayList<E>();
+
+        for (int i = 0; i < size; i++){
+            array.add(get(i));
+            
+        }
+
+        return array;
+
     }
     
 }
