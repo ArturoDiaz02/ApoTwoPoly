@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +17,8 @@ public class Main extends Application{
     private ObjectInputStream ois= new ObjectInputStream(new FileInputStream("data\\Data.txt"));
 
     public Main() throws ClassNotFoundException, FileNotFoundException, IOException {
-		this.gui = new ApoTwoPolyGUI((Board) ois.readObject());
+	    this.gui = new ApoTwoPolyGUI((Board) ois.readObject());
+        //this.gui = new ApoTwoPolyGUI();
         ois.close();
 
 	}
@@ -43,8 +43,10 @@ public class Main extends Application{
     }
 
     @Override
-    public void init(){
-        
+    public void init() throws ClassNotFoundException, IOException{
+        //Load load = new Load();
+        //load.escribir();
+
     }
 
 

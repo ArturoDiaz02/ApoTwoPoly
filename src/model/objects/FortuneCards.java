@@ -2,23 +2,21 @@ package model.objects;
 
 import java.io.Serializable;
 
-import javafx.scene.image.ImageView;
-
 public class FortuneCards implements Cards, Serializable {
     
-    private ImageView card;
+    private String card;
     private int idAction;
 
-    public FortuneCards(ImageView card, int typeAction) {
+    public FortuneCards(String card, int typeAction) {
         this.card = card;
         this.idAction = typeAction;
     }
 
-    public ImageView getCard() {
+    public String getCard() {
         return this.card;
     }
 
-    public void setCard(ImageView card) {
+    public void setCard(String card) {
         this.card = card;
     }
 

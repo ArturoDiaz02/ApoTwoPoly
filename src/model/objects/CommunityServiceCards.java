@@ -2,23 +2,21 @@ package model.objects;
 
 import java.io.Serializable;
 
-import javafx.scene.image.ImageView;
-
 public class CommunityServiceCards implements Cards, Serializable{
     
-    private ImageView card;
+    private String card;
     private int idAction;
 
-    public CommunityServiceCards(ImageView card, int typeAction) {
+    public CommunityServiceCards(String card, int typeAction) {
         this.card = card;
         this.idAction = typeAction;
     }
 
-    public ImageView getCard() {
+    public String getCard() {
         return this.card;
     }
 
-    public void setCard(ImageView card) {
+    public void setCard(String card) {
         this.card = card;
     }
 

@@ -2,7 +2,7 @@ package model.objects;
 
 public class WildCards extends Square {
 
-    private boolean typeWildCards;
+    private boolean typeWildCards; // true es community y false fortune
 
     public WildCards(int numSquare, int typeSquare, boolean typeWildCards) {
         super(numSquare, typeSquare);

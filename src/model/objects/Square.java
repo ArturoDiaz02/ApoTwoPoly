@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 import model.data_structure.MeLinkedLists;
 
-public class Square implements Serializable{
+public abstract class Square implements Serializable{
 
     private int numSquare;
-    private int typeSquare;
+    private int typeSquare; // 0 = propiedad, 1 = wild y 2 = commun
     private MeLinkedLists<Player> players;
 
-    public Square(int numSquare, int typeSquare) {
+    protected Square(int numSquare, int typeSquare) {
         this.numSquare = numSquare;
         this.typeSquare = typeSquare;
         this.players = new MeLinkedLists<>();

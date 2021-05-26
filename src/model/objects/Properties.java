@@ -1,10 +1,11 @@
 package model.objects;
 
-import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 public class Properties extends Square{
     
-    private ImageView property;
+    private String property;
+    private Player owner;
     private int costProperty;
     private int rentalProperty;
     private int[][] housesAndHotel;
@@ -12,7 +13,7 @@ public class Properties extends Square{
     private int mortgage;
 
 
-    public Properties(ImageView property, int costProperty, int rentalProperty, int[][] housesAndHotel, int[] costHousesAndHotel, int mortgage, int numSquare, int typeSquare) {
+    public Properties(String property, int costProperty, int rentalProperty, int[][] housesAndHotel, int[] costHousesAndHotel, int mortgage, int numSquare, int typeSquare) {
         super(numSquare, typeSquare);
         this.property = property;
         this.costProperty = costProperty;
@@ -20,15 +21,24 @@ public class Properties extends Square{
         this.housesAndHotel = housesAndHotel;
         this.costHousesAndHotel = costHousesAndHotel;
         this.mortgage = mortgage;
+        this.owner = null;
     }
 
-    
-    public ImageView getProperty() {
+
+    public String getProperty() {
         return this.property;
     }
 
-    public void setProperty(ImageView property) {
+    public void setProperty(String property) {
         this.property = property;
+    }
+
+    public Player getOwner() {
+        return this.owner;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
     }
 
     public int getCostProperty() {
@@ -70,5 +80,7 @@ public class Properties extends Square{
     public void setMortgage(int mortgage) {
         this.mortgage = mortgage;
     }
+  
+    
     
 }
