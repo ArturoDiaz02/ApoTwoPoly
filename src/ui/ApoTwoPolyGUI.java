@@ -42,6 +42,34 @@ public class ApoTwoPolyGUI {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("screens/game_screens/board_scene/board.fxml"));
         show(fxmlLoader);
 
+<<<<<<< Updated upstream
+=======
+
+    }
+    
+
+    @FXML
+    public void goAllProperties(ActionEvent event) throws IOException, ClassNotFoundException {
+        
+        show(new FXMLLoader(getClass().getResource("screens/pop-up/allProperties/AllProperties.fxml")), new Stage());
+       
+    }
+
+    @FXML
+    public void goDeal(ActionEvent event) throws IOException, ClassNotFoundException {
+        
+        show(new FXMLLoader(getClass().getResource("screens/pop-up/deal/Deal.fxml")), new Stage());
+       
+    }
+
+    @FXML
+    public void rollDice(ActionEvent event) throws IOException, ClassNotFoundException {
+        
+        show(new FXMLLoader(getClass().getResource("screens/pop-up/dice/Dice.fxml")), new Stage());
+        //threadDice = new Dice(this);
+        //threadDice.start();
+        
+>>>>>>> Stashed changes
     }
 
     private void show(FXMLLoader fxmlLoader) throws IOException{
