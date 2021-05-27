@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -77,15 +78,18 @@ public class ApoTwoPolyGUI {
 
     @FXML
     public void goTokens(ActionEvent event) throws IOException {
-
-        show(new FXMLLoader(getClass().getResource("screens/game_screens/tokens_scene/selectPlayers.fxml")), localStage);
+        mainLeave(event);
+        show(new FXMLLoader(getClass().getResource("screens/game_screens/tokens_scene/selectPlayers.fxml")), new Stage());
 
     }
 
     @FXML
     public void goBoard(ActionEvent event) throws IOException{
+        
+        mainLeave(event);
+        show(new FXMLLoader(getClass().getResource("screens/game_screens/board_scene/board.fxml")), new Stage());
+        alert("INFORMACION", "Con las teclas W,A,S,D el jugador en turno puede mover su token sobre el tablero, cuando desee terminar su turno preciose la tecla ENTER");
 
-        show(new FXMLLoader(getClass().getResource("screens/game_screens/board_scene/board.fxml")), localStage);
 
         if(checkBoat.isSelected()){
             paneBoat.setDisable(false);
@@ -147,6 +151,13 @@ public class ApoTwoPolyGUI {
     }
 
     @FXML
+    public void goAllProperties(ActionEvent event) throws IOException, ClassNotFoundException {
+        
+        show(new FXMLLoader(getClass().getResource("screens/pop-up/allProperties/AllProperties.fxml")), new Stage());
+       
+    }
+
+    @FXML
     public void goDeal(ActionEvent event) throws IOException, ClassNotFoundException {
         
         show(new FXMLLoader(getClass().getResource("screens/pop-up/deal/Deal.fxml")), new Stage());
@@ -159,7 +170,7 @@ public class ApoTwoPolyGUI {
         show(new FXMLLoader(getClass().getResource("screens/pop-up/dice/Dice.fxml")), new Stage());
         //threadDice = new Dice(this);
         //threadDice.start();
-        
+         
     }
 
     private void show(FXMLLoader fxmlLoader, Stage stage) throws IOException{
@@ -170,6 +181,7 @@ public class ApoTwoPolyGUI {
         stage.setScene(scene);
         stage.setTitle("ApoTwoPoly");
         stage.show();
+        localStage = stage;
 
     }
 
@@ -299,6 +311,15 @@ public class ApoTwoPolyGUI {
         }
        
       
+        
+    }
+
+    public void alert(String title, String mss){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(mss);
+        alert.showAndWait();
         
     }
 	
