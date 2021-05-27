@@ -1,4 +1,4 @@
-package model.data_structure;
+package data_structure;
 
 import java.io.Serializable;
 

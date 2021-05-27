@@ -1,6 +1,7 @@
-package model.data_structure;
+package data_structure;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MeLinkedLists<E> implements Serializable {
 
@@ -116,12 +117,25 @@ public class MeLinkedLists<E> implements Serializable {
     public void remove(int index){
         if(index == 0){
             head = head.getNext();
+            
         }else{
             getNode(index).getPrevious().setNext(getNode(index).getNext());
             getNode(index).getNext().setPrevious(getNode(index).getPrevious());
         }
 
         size -= 1;
+    }
+
+    public ArrayList<E> toArray(){
+        ArrayList<E> array = new ArrayList<E>();
+
+        for (int i = 0; i < size; i++){
+            array.add(get(i));
+            
+        }
+
+        return array;
+
     }
     
 }

@@ -1,18 +1,26 @@
 package ui;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import objects.Board;
 
 public class Main extends Application{
 
 	private ApoTwoPolyGUI gui;
+    private ObjectInputStream ois= new ObjectInputStream(new FileInputStream("data\\Data.txt"));
 
-    public Main() {
-		this.gui = new ApoTwoPolyGUI();
+    public Main() throws ClassNotFoundException, FileNotFoundException, IOException {
+    	this.gui = new ApoTwoPolyGUI((Board) ois.readObject());
+        //this.gui = new ApoTwoPolyGUI();
+        ois.close();
+
 	}
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
@@ -31,13 +39,14 @@ public class Main extends Application{
         stage.setTitle("ApoTwoPoly");
         stage.show();
 		gui.setLocalStage(stage);
-        //
+      
     }
 
     @Override
-    public void init(){
+    public void init() throws ClassNotFoundException, IOException{
+        //Load load = new Load();
+        //load.escribir();
 
-        
     }
 
 
