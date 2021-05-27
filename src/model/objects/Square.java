@@ -1,12 +1,13 @@
-package model.objects;
+package objects;
 
 import java.io.Serializable;
 
-import model.data_structure.MeLinkedLists;
+import data_structure.MeLinkedLists;
 
 public abstract class Square implements Serializable{
 
-    private int numSquare;
+	private static final long serialVersionUID = -1720566563896120783L;
+	private int numSquare;
     private int typeSquare; // 0 = propiedad, 1 = wild y 2 = commun
     private MeLinkedLists<Player> players;
 

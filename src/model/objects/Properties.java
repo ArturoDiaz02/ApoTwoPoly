@@ -1,10 +1,9 @@
-package model.objects;
-
-import javafx.scene.image.Image;
+package objects;
 
 public class Properties extends Square{
     
-    private String property;
+	private static final long serialVersionUID = -1150550527535536653L;
+	private String property;
     private Player owner;
     private int costProperty;
     private int rentalProperty;

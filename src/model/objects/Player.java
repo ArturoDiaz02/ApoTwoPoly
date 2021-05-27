@@ -1,15 +1,15 @@
-package model.objects;
+package objects;
 
 import java.io.Serializable;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import model.data_structure.MeLinkedLists;
+import data_structure.MeLinkedLists;
 
 public class Player implements Serializable{
-    
-    private MeLinkedLists<Square> properties;
+  
+	private static final long serialVersionUID = 5780182730822343543L;
+	private MeLinkedLists<Square> properties;
     private MeLinkedLists<CommunityServiceCards> especialCommunityCards;
     private MeLinkedLists<FortuneCards> especialFortuneCards;
     private int money;
@@ -25,6 +25,11 @@ public class Player implements Serializable{
         this.position = 0;
         this.token = token;
         this.nameToken = nameToken;
+    }
+    
+    public Player(ImageView token) {
+    	this.token = token;
+    	
     }
 
    
@@ -84,25 +89,31 @@ public class Player implements Serializable{
     public void setToken(ImageView token) {
         this.token = token;
     }
+    
+    public void createPlayer() {
+    	
+    	
+    	
+    }
 
-    public ImageView moveUp(KeyEvent event){
+    public ImageView moveUp(KeyCode event){
 
         double x = token.getLayoutX();
         double y = token.getLayoutY();
 
-        if(event.getCode() == KeyCode.A){
+        if(event == KeyCode.A){
             x = x - 8;
         }
 
-        if(event.getCode() == KeyCode.D){
+        if(event == KeyCode.D){
             x = x + 8;
         }
 
-        if(event.getCode() == KeyCode.W){
+        if(event == KeyCode.W){
             y = y - 8;
         }
 
-        if(event.getCode() == KeyCode.S){
+        if(event == KeyCode.S){
             y = y + 8;
         }
 
@@ -110,6 +121,7 @@ public class Player implements Serializable{
         token.setLayoutY(y);
 
         return token;
+        
 
     }
 

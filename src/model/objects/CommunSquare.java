@@ -1,8 +1,9 @@
-package model.objects;
+package objects;
 
 public class CommunSquare extends Square{
     
-    private int action;
+	private static final long serialVersionUID = -5814743446433770091L;
+	private int action;
     
     //1 = go, 2 = go carcel, 3 = carcel, 4 = free, 5 = impuestos
     public CommunSquare(int numSquare, int typeSquare, int action) {

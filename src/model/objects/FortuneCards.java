@@ -1,10 +1,11 @@
-package model.objects;
+package objects;
 
 import java.io.Serializable;
 
 public class FortuneCards implements Cards, Serializable {
     
-    private String card;
+	private static final long serialVersionUID = 452370941377952700L;
+	private String card;
     private int idAction;
 
     public FortuneCards(String card, int typeAction) {

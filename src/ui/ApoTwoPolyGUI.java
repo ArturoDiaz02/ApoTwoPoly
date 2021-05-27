@@ -1,8 +1,8 @@
 package ui;
 
-import java.io.FileInputStream;
+//import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
+//import java.io.ObjectInputStream;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +16,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.data_structure.MeLinkedLists;
-import model.objects.Board;
-import model.objects.Player;
-import model.threads.*;
+import data_structure.MeLinkedLists;
+import objects.Board;
+import objects.Player;
 
 public class ApoTwoPolyGUI {
 
@@ -58,10 +57,6 @@ public class ApoTwoPolyGUI {
     private final int TRY = 6;
     private Stage localStage;
     private Board board;
-    private Dice threadDice;
-    private Commun threadCommun;
-    private PropertiesThreads threadProperties;
-    private WildCardsThreads threadWildCards;
 
     public ApoTwoPolyGUI(Board board) {
         localStage = new Stage();
@@ -152,11 +147,18 @@ public class ApoTwoPolyGUI {
     }
 
     @FXML
+    public void goDeal(ActionEvent event) throws IOException, ClassNotFoundException {
+        
+        show(new FXMLLoader(getClass().getResource("screens/pop-up/deal/Deal.fxml")), new Stage());
+       
+    }
+
+    @FXML
     public void rollDice(ActionEvent event) throws IOException, ClassNotFoundException {
         
         show(new FXMLLoader(getClass().getResource("screens/pop-up/dice/Dice.fxml")), new Stage());
-        threadDice = new Dice(this);
-        threadDice.start();
+        //threadDice = new Dice(this);
+        //threadDice.start();
         
     }
 
@@ -188,49 +190,56 @@ public class ApoTwoPolyGUI {
     public void moveToken(KeyEvent event) throws ClassNotFoundException, IOException {
         switch (board.getPlayers().get(board.getTurn()).getNameToken()) {
             case "BOAT":
-                tokenBoat = board.getPlayers().get(board.getTurn()).moveUp(event);
+                tokenBoat = board.getPlayers().get(board.getTurn()).moveUp(event.getCode());
                 break;
         
             case "BOX":
-                tokenBox = board.getPlayers().get(board.getTurn()).moveUp(event);
+                tokenBox = board.getPlayers().get(board.getTurn()).moveUp(event.getCode());
                 break;
 
             case "CAR":
-                tokenCar = board.getPlayers().get(board.getTurn()).moveUp(event);
+                tokenCar = board.getPlayers().get(board.getTurn()).moveUp(event.getCode());
                 break;
 
             case "CAT":
-                tokenCat = board.getPlayers().get(board.getTurn()).moveUp(event);
+                tokenCat = board.getPlayers().get(board.getTurn()).moveUp(event.getCode());
                 break;
 
             case "DOG":
-                tokenDog = board.getPlayers().get(board.getTurn()).moveUp(event);
+                tokenDog = board.getPlayers().get(board.getTurn()).moveUp(event.getCode());
                 break;
 
             case "HAT":
-                tokenHat = board.getPlayers().get(board.getTurn()).moveUp(event);
+                tokenHat = board.getPlayers().get(board.getTurn()).moveUp(event.getCode());
                 break;
 
             case "HOLE":
-                tokenHole = board.getPlayers().get(board.getTurn()).moveUp(event);
+                tokenHole = board.getPlayers().get(board.getTurn()).moveUp(event.getCode());
                 break;
 
             case "SHOES":
-                tokenShoes = board.getPlayers().get(board.getTurn()).moveUp(event);
+                tokenShoes = board.getPlayers().get(board.getTurn()).moveUp(event.getCode());
                 break;
         }
 
         if(event.getCode() == KeyCode.ENTER){
-            threadCommun = new Commun(board);
+           /* threadCommun = new Commun(board);
             threadProperties = new PropertiesThreads(board);
             threadWildCards = new WildCardsThreads(board);
             threadCommun.start();
             threadProperties.start();
-            threadWildCards.start();
+            threadWildCards.start();*/
 
-            ObjectInputStream ois= new ObjectInputStream(new FileInputStream("data\\Data.txt"));
+            board.setTurn(board.getTurn() + 1);
+
+            if(board.getTurn() == board.getPlayers().size()){
+                board.setTurn(0);
+            }
+
+
+            /*ObjectInputStream ois= new ObjectInputStream(new FileInputStream("data\\Data.txt"));
             board = (Board) ois.readObject();
-            ois.close();
+            ois.close();*/
 
         }
 

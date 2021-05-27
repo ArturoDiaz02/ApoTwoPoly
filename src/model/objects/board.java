@@ -1,12 +1,13 @@
-package model.objects;
+package objects;
 
 import java.io.Serializable;
 
-import model.data_structure.MeLinkedLists;
+import data_structure.MeLinkedLists;
 
 public class Board implements Serializable {
 
-    private MeLinkedLists<Properties> propertiesSquare;
+	private static final long serialVersionUID = 262921139849267465L;
+	private MeLinkedLists<Properties> propertiesSquare;
     private MeLinkedLists<WildCards> wildCardsSquare;
     private MeLinkedLists<CommunSquare> communSquare;
     private MeLinkedLists<Player> players;

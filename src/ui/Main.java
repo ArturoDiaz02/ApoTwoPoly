@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.objects.Board;
+import objects.Board;
 
 public class Main extends Application{
 
@@ -17,7 +17,7 @@ public class Main extends Application{
     private ObjectInputStream ois= new ObjectInputStream(new FileInputStream("data\\Data.txt"));
 
     public Main() throws ClassNotFoundException, FileNotFoundException, IOException {
-	    this.gui = new ApoTwoPolyGUI((Board) ois.readObject());
+    	this.gui = new ApoTwoPolyGUI((Board) ois.readObject());
         //this.gui = new ApoTwoPolyGUI();
         ois.close();
 

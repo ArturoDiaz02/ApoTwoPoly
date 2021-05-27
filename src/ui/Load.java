@@ -1,15 +1,15 @@
 package ui;
 
-import model.objects.Board;
-import model.objects.CommunSquare;
-import model.objects.CommunityServiceCards;
-import model.objects.FortuneCards;
-import model.objects.Properties;
-import model.objects.WildCards;
+import objects.Board;
+import objects.CommunSquare;
+import objects.CommunityServiceCards;
+import objects.FortuneCards;
+import objects.Properties;
+import objects.WildCards;
 import java.io.IOException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import model.data_structure.MeLinkedLists;
+import data_structure.MeLinkedLists;
 
 public class Load {
 

@@ -1,8 +1,9 @@
-package model.objects;
+package objects;
 
 public class WildCards extends Square {
 
-    private boolean typeWildCards; // true es community y false fortune
+	private static final long serialVersionUID = 192875853834156303L;
+	private boolean typeWildCards; // true es community y false fortune
 
     public WildCards(int numSquare, int typeSquare, boolean typeWildCards) {
         super(numSquare, typeSquare);

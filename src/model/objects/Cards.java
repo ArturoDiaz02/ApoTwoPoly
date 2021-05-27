@@ -1,4 +1,4 @@
-package model.objects;
+package objects;
 
 public interface Cards {
     

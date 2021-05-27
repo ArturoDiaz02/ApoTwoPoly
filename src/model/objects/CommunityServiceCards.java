@@ -1,10 +1,11 @@
-package model.objects;
+package objects;
 
 import java.io.Serializable;
 
 public class CommunityServiceCards implements Cards, Serializable{
     
-    private String card;
+	private static final long serialVersionUID = 7550310221349172151L;
+	private String card;
     private int idAction;
 
     public CommunityServiceCards(String card, int typeAction) {
