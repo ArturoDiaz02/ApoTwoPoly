@@ -11,47 +11,47 @@
    <children>
       <ImageView fitHeight="409.0" fitWidth="728.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@backgraun.jpg" />
+            <Image url="@../../../../images/backGrounds/backGroundsSelectPlayer.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@rectc3a1ngulo2.jpg" />
+            <Image url="@../../../../images/graphic/rectangleSelectPlayer.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="217.0" layoutX="14.0" layoutY="116.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@rectc3a1ngulo2.jpg" />
+            <Image url="@../../../../images/graphic/rectangleSelectPlayer.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="184.0" layoutX="14.0" layoutY="216.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@rectc3a1ngulo2.jpg" />
+            <Image url="@../../../../images/graphic/rectangleSelectPlayer.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="175.0" layoutX="14.0" layoutY="312.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@rectc3a1ngulo2.jpg" />
+            <Image url="@../../../../images/graphic/rectangleSelectPlayer.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="200.0" layoutX="539.0" layoutY="14.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@rectc3a1ngulo2.jpg" />
+            <Image url="@../../../../images/graphic/rectangleSelectPlayer.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="217.0" layoutX="539.0" layoutY="116.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@rectc3a1ngulo2.jpg" />
+            <Image url="@../../../../images/graphic/rectangleSelectPlayer.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="217.0" layoutX="539.0" layoutY="216.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@rectc3a1ngulo2.jpg" />
+            <Image url="@../../../../images/graphic/rectangleSelectPlayer.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="217.0" layoutX="539.0" layoutY="312.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@rectc3a1ngulo2.jpg" />
+            <Image url="@../../../../images/graphic/rectangleSelectPlayer.jpg" />
          </image>
       </ImageView>
       <CheckBox fx:id="checkBoat" layoutX="152.0" layoutY="47.0" mnemonicParsing="false" />
@@ -64,49 +64,49 @@
       <CheckBox fx:id="checkShoes" layoutX="556.0" layoutY="345.0" mnemonicParsing="false" />
       <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="55.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@tokens/boat.png" />
+            <Image url="@../../../../images/tokens/boat.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="48.0" fitWidth="86.0" layoutX="42.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@tokens/box.png" />
+            <Image url="@../../../../images/tokens/box.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="96.0" layoutX="43.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@tokens/car.png" />
+            <Image url="@../../../../images/tokens/car.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="59.0" layoutX="55.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@tokens/cat.png" />
+            <Image url="@../../../../images/tokens/cat.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="72.0" layoutX="615.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@tokens/dog.png" />
+            <Image url="@../../../../images/tokens/dog.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="84.0" layoutX="608.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@tokens/hat.png" />
+            <Image url="@../../../../images/tokens/hat.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="92.0" fitWidth="59.0" layoutX="621.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@tokens/hole.png" />
+            <Image url="@../../../../images/tokens/hole.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="84.0" layoutX="615.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@tokens/shoes.png" />
+            <Image url="@../../../../images/tokens/shoes.png" />
          </image>
       </ImageView>
       <Button contentDisplay="GRAPHIC_ONLY" defaultButton="true" layoutX="285.0" layoutY="199.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goBoard" prefHeight="80.0" prefWidth="160.0">
          <graphic>
             <ImageView fitHeight="80.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Play%20Buttons.png" />
+                  <Image url="@../../../../images/graphic/Play%20Buttons.png" />
                </image>
             </ImageView>
          </graphic>
@@ -116,7 +116,7 @@
       </Button>
       <ImageView fitHeight="105.0" fitWidth="251.0" layoutX="239.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@banner.png" />
+            <Image url="@../../../../images/graphic/bannerSelectPlayer.png" />
          </image>
       </ImageView>
    </children>

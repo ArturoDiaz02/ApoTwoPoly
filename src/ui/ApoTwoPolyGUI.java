@@ -9,53 +9,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import data_structure.MeLinkedLists;
 import objects.Board;
 import objects.Player;
 
-public class ApoTwoPolyGUI {
-
-    @FXML private Pane paneBoat;
-    @FXML private Pane paneBox;
-    @FXML private Pane paneCar;
-    @FXML private Pane paneCat;
-    @FXML private Pane paneDog;
-    @FXML private Pane paneHat;
-    @FXML private Pane paneHole;
-    @FXML private Pane paneShoes;
-    @FXML private CheckBox checkBoat;
-    @FXML private CheckBox checkBox;
-    @FXML private CheckBox checkCar;
-    @FXML private CheckBox checkCat;
-    @FXML private CheckBox checkDog;
-    @FXML private CheckBox checkHat;
-    @FXML private CheckBox checkHole;
-    @FXML private CheckBox checkShoes;
-    @FXML private ImageView tokenHat;
-    @FXML private ImageView tokenShoes;
-    @FXML private ImageView tokenHole;
-    @FXML private ImageView tokenBox;
-    @FXML private ImageView tokenCar;
-    @FXML private ImageView tokenBoat;
-    @FXML private ImageView tokenDog;
-    @FXML private ImageView tokenCat;
-    @FXML private ImageView dice1;
-    @FXML private ImageView dice2;
-    @FXML private Label numDice;
+public class ApoTwoPolyGUI extends AttributesGUI{
 
     //**************************************************************************************************************************
     // Object GUI
 
     private final int TOTALMONEY = 1500;
-    private final int TRY = 6;
+    private final int TRY = 10;
     private Stage localStage;
     private Board board;
 
@@ -85,69 +53,74 @@ public class ApoTwoPolyGUI {
 
     @FXML
     public void goBoard(ActionEvent event) throws IOException{
-        
-        mainLeave(event);
-        show(new FXMLLoader(getClass().getResource("screens/game_screens/board_scene/board.fxml")), new Stage());
-        alert("INFORMACION", "Con las teclas W,A,S,D el jugador en turno puede mover su token sobre el tablero, cuando desee terminar su turno preciose la tecla ENTER");
 
+        if(!(checkBoat.isSelected()) && !(checkBox.isSelected()) && !(checkCar.isSelected()) && !(checkCat.isSelected()) && !(checkDog.isSelected()) && !(checkHat.isSelected()) && !(checkHole.isSelected()) && !(checkShoes.isSelected())){
 
-        if(checkBoat.isSelected()){
-            paneBoat.setDisable(false);
-            tokenBoat.setVisible(true);
-            board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenBoat, "BOAT"));
+        }else{
+
+            mainLeave(event);
+            show(new FXMLLoader(getClass().getResource("screens/game_screens/board_scene/board.fxml")), new Stage());
+            alert("INFORMACION", "Con las teclas W,A,S,D el jugador en turno puede mover su token sobre el tablero, cuando desee terminar su turno preciose la tecla ENTER");
+    
+    
+            if(checkBoat.isSelected()){
+                paneBoat.setDisable(false);
+                tokenBoat.setVisible(true);
+                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenBoat, "BOAT"));
+                
+            }
             
+            if(checkBox.isSelected()){
+                paneBox.setDisable(false);
+                tokenBox.setVisible(true);
+                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenBox, "BOX"));
+                
+            }
+    
+            if(checkCar.isSelected()){
+                paneCar.setDisable(false);
+                tokenCar.setVisible(true);
+                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenCar, "CAR"));
+                
+            }
+    
+            if(checkCat.isSelected()){
+                paneCat.setDisable(false);
+                tokenCat.setVisible(true);
+                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenCat, "CAT"));
+                
+            }
+    
+            if(checkDog.isSelected()){
+                paneDog.setDisable(false);
+                tokenDog.setVisible(true);
+                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenDog, "DOG"));
+                
+            }
+    
+            if(checkHat.isSelected()){
+                paneHat.setDisable(false);
+                tokenHat.setVisible(true);
+                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenHat, "HAT"));
+                
+            }
+    
+            if(checkHole.isSelected()){
+                paneHole.setDisable(false);
+                tokenHole.setVisible(true);
+                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenHole, "HOLE"));
+                
+            }
+    
+            if(checkShoes.isSelected()){
+                paneShoes.setDisable(false);
+                tokenShoes.setVisible(true);
+                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenShoes, "SHOES"));
+                
+            }
+
         }
         
-        if(checkBox.isSelected()){
-            paneBox.setDisable(false);
-            tokenBox.setVisible(true);
-            board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenBox, "BOX"));
-            
-        }
-
-        if(checkCar.isSelected()){
-            paneCar.setDisable(false);
-            tokenCar.setVisible(true);
-            board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenCar, "CAR"));
-            
-        }
-
-        if(checkCat.isSelected()){
-            paneCat.setDisable(false);
-            tokenCat.setVisible(true);
-            board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenCat, "CAT"));
-            
-        }
-
-        if(checkDog.isSelected()){
-            paneDog.setDisable(false);
-            tokenDog.setVisible(true);
-            board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenDog, "DOG"));
-            
-        }
-
-        if(checkHat.isSelected()){
-            paneHat.setDisable(false);
-            tokenHat.setVisible(true);
-            board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenHat, "HAT"));
-            
-        }
-
-        if(checkHole.isSelected()){
-            paneHole.setDisable(false);
-            tokenHole.setVisible(true);
-            board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenHole, "HOLE"));
-            
-        }
-
-        if(checkShoes.isSelected()){
-            paneShoes.setDisable(false);
-            tokenShoes.setVisible(true);
-            board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenShoes, "SHOES"));
-            
-        }
-
-
     }
 
     @FXML
@@ -165,11 +138,11 @@ public class ApoTwoPolyGUI {
     }
 
     @FXML
-    public void rollDice(ActionEvent event) throws IOException, ClassNotFoundException {
+    public void rollDice(ActionEvent event) throws IOException, ClassNotFoundException, InterruptedException {
         
         show(new FXMLLoader(getClass().getResource("screens/pop-up/dice/Dice.fxml")), new Stage());
-        //threadDice = new Dice(this);
-        //threadDice.start();
+        
+        initDice();
          
     }
 
@@ -248,16 +221,69 @@ public class ApoTwoPolyGUI {
                 board.setTurn(0);
             }
 
+            if(board.getPlayers().get(board.getTurn()).getPenalty() == 3){
+                //para la carcel por 3 pares
 
-            /*ObjectInputStream ois= new ObjectInputStream(new FileInputStream("data\\Data.txt"));
-            board = (Board) ois.readObject();
-            ois.close();*/
+            }
+
+
+            refresh();
 
         }
 
     }
 
-    public Board initDice() throws IOException {
+    public void refresh(){
+
+        for(Player player : board.getPlayers().toArray()){
+
+            int money = player.getMoney();
+
+            switch(player.getNameToken()){
+                case "BOAT":
+                    moneyBoat.setText(String.valueOf(money));
+                    break;
+    
+                case "HAT":
+                    moneyHat.setText(String.valueOf(money));
+                    break;
+    
+                case "HOLE":
+                    moneyHole.setText(String.valueOf(money));
+                    break;
+    
+                case "CAR":
+                    moneyCar.setText(String.valueOf(money));
+                    break;
+    
+                case "CAT":
+                    moneyCat.setText(String.valueOf(money));
+                    break;
+    
+                case "SHOES":
+                    moneyShoes.setText(String.valueOf(money));
+                    break;
+    
+                case "BOX":
+                    moneyBox.setText(String.valueOf(money));
+                    break;
+    
+                case "DOG":
+                    moneyDog.setText(String.valueOf(money));
+                    break;
+    
+               
+    
+            }
+    
+            
+        }
+
+
+    }
+
+   
+    public void initDice() throws IOException, InterruptedException {
 
         int diceOne = 0;
         int diceTwo = 0;
@@ -267,50 +293,71 @@ public class ApoTwoPolyGUI {
             diceOne = (int) (Math.random()*5)+1;
             diceTwo = (int) (Math.random()*5)+1;
 
-            System.out.println(diceOne + " " + diceTwo);
-    
-            dice1.setImage(new Image(dice(diceOne)));
-            dice2.setImage(new Image(dice(diceTwo)));
-
+            dice1.setImage(new Image(dice(diceOne), 58, 58, true, true, true));
+            dice2.setImage(new Image(dice(diceTwo), 58, 58, true, true, true));
             
-
         }
 
         numDice.setText(String.valueOf(diceOne + diceTwo));
 
-        board.getPlayers().get(board.getTurn()).setPosition(board.getPlayers().get(board.getTurn()).getPosition() + diceOne + diceTwo);
+        if((diceOne + diceTwo) % 2 == 0){
+            alert("Sacaste un Numero PAR", "Puedes volver a tirar el dado");
+            board.getPlayers().get(board.getTurn()).setPenalty(board.getPlayers().get(board.getTurn()).getPenalty() + 1);
+            
+        }else{
+            board.getPlayers().get(board.getTurn()).setPenalty(0);
 
-        return board;
+        }
+
+        if(board.getPlayers().get(board.getTurn()).getPosition() + diceOne + diceTwo < 40){
+            
+            board.getPlayers().get(board.getTurn()).setPosition(board.getPlayers().get(board.getTurn()).getPosition() + diceOne + diceTwo);
+
+        }else{
+            board.getPlayers().get(board.getTurn()).setPosition(1 + ((diceOne + diceTwo) - (40 -  board.getPlayers().get(board.getTurn()).getPosition())));
+            board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() + 200);
+            
+            if(board.getTurn() + 1 > board.getPlayers().size() - 1){
+                board.setTurn(0);
+
+            }else{
+                board.setTurn(board.getTurn() + 1);
+
+            }
+
+        }
+
+        
 
     }
 
-    private String dice(int value){
+    private String dice(int value) {
+
+        String url = "/images/dice/";
 
         switch (value) {
            case 1:
-                return "de1.jpg";
+                return url + "de1.jpg";
         
             case 2:
-                return "de2.jpg";
+                return url + "de2.jpg";
               
             case 3:
-                return "de3.jpg";
+                return url + "de3.jpg";
              
             case 4:
-                return "de4.jpg";
+                return url + "de4.jpg";
               
             case 5:
-                return "de5.jpg";
+                return url + "de5.jpg";
               
             case 6:
-                return "de6.jpg";
+                return url + "de6.jpg";
              
             default:
-                return "de1.jpg";
+                return url + "de1.jpg";
              
         }
-       
-      
         
     }
 

@@ -13,6 +13,8 @@ public class CommunityServiceCards implements Cards, Serializable{
         this.idAction = typeAction;
     }
 
+    public CommunityServiceCards() {}
+
     public String getCard() {
         return this.card;
     }

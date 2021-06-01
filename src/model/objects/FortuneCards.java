@@ -13,6 +13,8 @@ public class FortuneCards implements Cards, Serializable {
         this.idAction = typeAction;
     }
 
+    public FortuneCards() {}
+
     public String getCard() {
         return this.card;
     }

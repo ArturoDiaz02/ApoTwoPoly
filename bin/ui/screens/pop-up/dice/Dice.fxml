@@ -9,19 +9,11 @@
    <children>
       <ImageView fitHeight="93.0" fitWidth="198.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@backGraund.jpg" />
+            <Image url="@../../../../images/backGrounds/backGraundDice.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="dice1" fitHeight="58.0" fitWidth="58.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@de1.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="dice2" fitHeight="58.0" fitWidth="58.0" layoutX="113.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@de1.jpg" />
-         </image>
-      </ImageView>
-      <Label fx:id="numDice" layoutX="79.0" layoutY="71.0" text="Label" />
+      <ImageView fx:id="dice1" fitHeight="58.0" fitWidth="58.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dice2" fitHeight="58.0" fitWidth="58.0" layoutX="113.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="numDice" layoutX="79.0" layoutY="71.0" />
    </children>
 </Pane>

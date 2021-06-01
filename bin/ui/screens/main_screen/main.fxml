@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="546.0" fitWidth="858.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image_main.jpg" />
+            <Image url="@../../../images/backGrounds/backGroundsMain.jpg" />
          </image>
       </ImageView>
       <Label layoutX="53.0" layoutY="28.0" prefHeight="137.0" prefWidth="223.0" text="ApoTwoPoly" textAlignment="CENTER" underline="true">
@@ -55,7 +55,7 @@
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Leave%20button.png" />
+                  <Image url="@../../../images/graphic/Leave%20button.png" />
                </image>
             </ImageView>
          </graphic>
@@ -67,7 +67,7 @@
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Play%20Buttons.png" />
+                  <Image url="@../../../images/graphic/Play%20Buttons.png" />
                </image>
             </ImageView>
          </graphic>

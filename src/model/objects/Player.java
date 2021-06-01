@@ -16,6 +16,7 @@ public class Player implements Serializable{
     private int position;
     private String nameToken;
     private ImageView token;
+    private int penalty;
 
     public Player(MeLinkedLists<Square> properties, MeLinkedLists<CommunityServiceCards> especialCommunityCards, MeLinkedLists<FortuneCards> especialFortuneCards, int money, ImageView token, String nameToken) {
         this.properties = properties;
@@ -25,6 +26,7 @@ public class Player implements Serializable{
         this.position = 0;
         this.token = token;
         this.nameToken = nameToken;
+        this.penalty = 0;
     }
     
     public Player(ImageView token) {
@@ -32,7 +34,6 @@ public class Player implements Serializable{
     	
     }
 
-   
 
     public MeLinkedLists<Square> getProperties() {
         return this.properties;
@@ -89,6 +90,17 @@ public class Player implements Serializable{
     public void setToken(ImageView token) {
         this.token = token;
     }
+
+    public int getPenalty() {
+        return this.penalty;
+    }
+
+    public void setPenalty(int penalty) {
+        this.penalty = penalty;
+    }
+   
+
+  
     
     public void createPlayer() {
     	
