@@ -15,7 +15,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#moveToken" prefHeight="1007.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="1009.0" fitWidth="1920.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1033.0" fitWidth="1949.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images/backGrounds/game.jpg" />
          </image>
@@ -26,7 +26,7 @@
          </image>
       </ImageView>
       <Separator layoutX="1025.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="1009.0" prefWidth="35.0" />
-      <GridPane layoutX="1400.0" layoutY="54.0" prefHeight="877.0" prefWidth="511.0">
+      <GridPane fx:id="gridPaneGame" layoutX="1400.0" layoutY="54.0" prefHeight="877.0" prefWidth="511.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -41,9 +41,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane fx:id="paneBoat" disable="true" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="paneBoat" opacity="0.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageViewBoat" fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../images/graphic/rectangleGame.jpg" />
                      </image>
@@ -72,9 +72,9 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneBox" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Pane fx:id="paneBox" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageViewBox" fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../images/graphic/rectangleGame.jpg" />
                      </image>
@@ -103,9 +103,9 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneCar" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <Pane fx:id="paneCar" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageViewCar" fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../images/graphic/rectangleGame.jpg" />
                      </image>
@@ -134,9 +134,9 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneCat" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <Pane fx:id="paneCat" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
-                  <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageViewCat" fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../images/graphic/rectangleGame.jpg" />
                      </image>
@@ -165,9 +165,9 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneDog" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+            <Pane fx:id="paneDog" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
-                  <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageViewDog" fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../images/graphic/rectangleGame.jpg" />
                      </image>
@@ -196,9 +196,9 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneHat" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+            <Pane fx:id="paneHat" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                <children>
-                  <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageViewHat" fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../images/graphic/rectangleGame.jpg" />
                      </image>
@@ -227,9 +227,9 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneHole" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+            <Pane fx:id="paneHole" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
                <children>
-                  <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageViewHole" fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../images/graphic/rectangleGame.jpg" />
                      </image>
@@ -258,9 +258,9 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneShoes" disable="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
+            <Pane fx:id="paneShoes" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
                <children>
-                  <ImageView fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageViewShoes" fitHeight="109.0" fitWidth="548.0" layoutX="2.0" layoutY="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../images/graphic/rectangleGame.jpg" />
                      </image>
@@ -296,17 +296,17 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Button fx:id="buttonRollDice" layoutX="1093.0" layoutY="338.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="89.0" prefWidth="253.0" text="Tirar Dado">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
       <Button layoutX="1093.0" layoutY="234.0" mnemonicParsing="false" onAction="#goDeal" prefHeight="89.0" prefWidth="253.0" text="Negocio">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="1093.0" layoutY="338.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="89.0" prefWidth="253.0" text="Tirar Dado">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <TextArea editable="false" layoutX="1087.0" layoutY="467.0" prefHeight="504.0" prefWidth="267.0">
+      <TextArea fx:id="registerLabel" editable="false" layoutX="1087.0" layoutY="467.0" prefHeight="504.0" prefWidth="267.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></TextArea>

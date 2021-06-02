@@ -2,6 +2,8 @@ package ui;
 
 //import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+
 //import java.io.ObjectInputStream;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,10 +14,20 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import data_structure.MeLinkedLists;
 import objects.Board;
-import objects.Player;
+import objects.CommunSquare;
+import objects.CommunityServiceCards;
+import objects.FortuneCards;
+import objects.Properties;
+import objects.Token;
+import threads.CommunThreads;
+import threads.PanesOrderingThreads;
+import threads.PropertiesThreads;
+import threads.WildCardsThreads;
 
 public class ApoTwoPolyGUI extends AttributesGUI{
 
@@ -26,6 +38,10 @@ public class ApoTwoPolyGUI extends AttributesGUI{
     private final int TRY = 10;
     private Stage localStage;
     private Board board;
+    private WildCardsThreads threadWildCards;
+    private PropertiesThreads threadProperties;
+    private CommunThreads threadCommun;
+    private PanesOrderingThreads threadPanesOrdering;
 
     public ApoTwoPolyGUI(Board board) {
         localStage = new Stage();
@@ -60,64 +76,68 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
             mainLeave(event);
             show(new FXMLLoader(getClass().getResource("screens/game_screens/board_scene/board.fxml")), new Stage());
-            alert("INFORMACION", "Con las teclas W,A,S,D el jugador en turno puede mover su token sobre el tablero, cuando desee terminar su turno preciose la tecla ENTER");
-    
     
             if(checkBoat.isSelected()){
-                paneBoat.setDisable(false);
+                paneBoat.setOpacity(1);
                 tokenBoat.setVisible(true);
-                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenBoat, "BOAT"));
+                board.getPlayers().add(new Token(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenBoat, "BOAT"));
                 
             }
             
             if(checkBox.isSelected()){
-                paneBox.setDisable(false);
+                paneBox.setOpacity(1);
                 tokenBox.setVisible(true);
-                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenBox, "BOX"));
+                board.getPlayers().add(new Token(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenBox, "BOX"));
                 
             }
     
             if(checkCar.isSelected()){
-                paneCar.setDisable(false);
+                paneCar.setOpacity(1);
                 tokenCar.setVisible(true);
-                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenCar, "CAR"));
+                board.getPlayers().add(new Token(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenCar, "CAR"));
                 
             }
     
             if(checkCat.isSelected()){
-                paneCat.setDisable(false);
+                paneCat.setOpacity(1);
                 tokenCat.setVisible(true);
-                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenCat, "CAT"));
+                board.getPlayers().add(new Token(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenCat, "CAT"));
                 
             }
     
             if(checkDog.isSelected()){
-                paneDog.setDisable(false);
+                paneDog.setOpacity(1);
                 tokenDog.setVisible(true);
-                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenDog, "DOG"));
+                board.getPlayers().add(new Token(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenDog, "DOG"));
                 
             }
     
             if(checkHat.isSelected()){
-                paneHat.setDisable(false);
+                paneHat.setOpacity(1);
                 tokenHat.setVisible(true);
-                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenHat, "HAT"));
+                board.getPlayers().add(new Token(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenHat, "HAT"));
                 
             }
     
             if(checkHole.isSelected()){
-                paneHole.setDisable(false);
+                paneHole.setOpacity(1);
                 tokenHole.setVisible(true);
-                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenHole, "HOLE"));
+                board.getPlayers().add(new Token(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenHole, "HOLE"));
                 
             }
     
             if(checkShoes.isSelected()){
-                paneShoes.setDisable(false);
+                paneShoes.setOpacity(1);
                 tokenShoes.setVisible(true);
-                board.getPlayers().add(new Player(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenShoes, "SHOES"));
+                board.getPlayers().add(new Token(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>(), TOTALMONEY, tokenShoes, "SHOES"));
                 
             }
+
+            threadPanesOrdering = new PanesOrderingThreads(paneBoat, paneBox, paneCar, paneCat, paneDog, paneHat, paneHole, paneShoes, this);
+            threadPanesOrdering.start();
+
+            alert("INFORMACION", "Con las teclas W,A,S,D el jugador en turno puede mover su token sobre el tablero, cuando desee terminar su turno preciose la tecla ENTER");
+
 
         }
         
@@ -139,10 +159,19 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
     @FXML
     public void rollDice(ActionEvent event) throws IOException, ClassNotFoundException, InterruptedException {
+
+        if(validationMove()){
         
-        show(new FXMLLoader(getClass().getResource("screens/pop-up/dice/Dice.fxml")), new Stage());
-        
-        initDice();
+            show(new FXMLLoader(getClass().getResource("screens/pop-up/dice/Dice.fxml")), new Stage());
+            initDice();
+
+        }else{
+
+            show(new FXMLLoader(getClass().getResource("screens/pop-up/payJail/Jail.fxml")), new Stage());
+            labelPayJail.setText("Espera " + board.getPlayers().get(board.getTurn()).getPenalty() + " turnos o paga la fianza de $500");
+            buttonRollDice.setDisable(true);
+
+        }
          
     }
 
@@ -169,7 +198,7 @@ public class ApoTwoPolyGUI extends AttributesGUI{
     }
 
     //**************************************************************************************************************************
-    // Methods
+    // Move
 
     @FXML
     public void moveToken(KeyEvent event) throws ClassNotFoundException, IOException {
@@ -208,34 +237,260 @@ public class ApoTwoPolyGUI extends AttributesGUI{
         }
 
         if(event.getCode() == KeyCode.ENTER){
-           /* threadCommun = new Commun(board);
-            threadProperties = new PropertiesThreads(board);
-            threadWildCards = new WildCardsThreads(board);
+
+            threadCommun = new CommunThreads(board, this);
+            threadProperties = new PropertiesThreads(board, this);
+            threadWildCards = new WildCardsThreads(board, this);
+
             threadCommun.start();
             threadProperties.start();
-            threadWildCards.start();*/
-
-            board.setTurn(board.getTurn() + 1);
-
-            if(board.getTurn() == board.getPlayers().size()){
-                board.setTurn(0);
-            }
-
-            if(board.getPlayers().get(board.getTurn()).getPenalty() == 3){
-                //para la carcel por 3 pares
-
-            }
-
-
-            refresh();
+            threadWildCards.start();
 
         }
 
     }
 
-    public void refresh(){
+    
 
-        for(Player player : board.getPlayers().toArray()){
+    //**************************************************************************************************************************
+    // Dice
+
+    private void initDice() throws IOException, InterruptedException {
+
+        int diceOne = 0;
+        int diceTwo = 0;
+    
+        for(int i = 0; i < TRY; i++){
+    
+            diceOne = (int) (Math.random()*5)+1;
+            diceTwo = (int) (Math.random()*5)+1;
+    
+            dice1.setImage(new Image(dice(diceOne), 58, 58, true, true, true));
+            dice2.setImage(new Image(dice(diceTwo), 58, 58, true, true, true));
+                
+        }
+    
+        numDice.setText(String.valueOf(diceOne + diceTwo));
+        buttonRollDice.setDisable(true);
+    
+         if(registerLabel.getText().equals("")){
+            registerLabel.setText(board.getPlayers().get(board.getTurn()).getNameToken() + " saco " + (diceOne + diceTwo) + " en los dados.\n");
+    
+        }else{
+            registerLabel.setText(registerLabel.getText() + board.getPlayers().get(board.getTurn()).getNameToken() + " saco " + (diceOne + diceTwo) + " en los dados.\n");
+        }
+    
+        if(diceOne == diceTwo){  
+
+            board.getPlayers().get(board.getTurn()).setPenalty(board.getPlayers().get(board.getTurn()).getPenalty() + 1);
+
+            if(board.getPlayers().get(board.getTurn()).getPenalty() == 3){
+                actionCommunSquare(board.getCommunSquare().get(4));
+    
+            }else{
+                alert("Sacaste un Numero PAR", "Puedes volver a tirar el dado");
+                board.getPlayers().get(board.getTurn()).setPar(true);
+
+            }
+
+            registerLabel.setText(registerLabel.getText() + board.getPlayers().get(board.getTurn()).getNameToken() + " saco PAR.\n");
+            buttonRollDice.setDisable(false);
+    
+        }else{
+            board.getPlayers().get(board.getTurn()).setPenalty(0);
+            board.getPlayers().get(board.getTurn()).setPar(false);
+    
+        }
+    
+        if(board.getPlayers().get(board.getTurn()).getPosition() + diceOne + diceTwo < 39){
+                
+             board.getPlayers().get(board.getTurn()).setPosition(board.getPlayers().get(board.getTurn()).getPosition() + diceOne + diceTwo);
+    
+        }else{
+    
+            board.getPlayers().get(board.getTurn()).setPosition(((diceOne + diceTwo) - (40 -  board.getPlayers().get(board.getTurn()).getPosition())));
+            board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() + 200);
+                
+            if(board.getTurn() + 1 > board.getPlayers().size() - 1){
+                board.setTurn(0);
+    
+            }else{
+                 board.setTurn(board.getTurn() + 1);
+    
+            }
+    
+        }
+
+        
+    }
+
+    private boolean validationMove(){
+
+        boolean vali = true;
+        
+        if(board.getCommunSquare().get(2).getJail().getHead() != null){
+
+            for(Token token : board.getCommunSquare().get(2).getJail().toArray()){
+
+                if(board.getPlayers().get(board.getTurn()).getNameToken().equals(token.getNameToken())){
+    
+                    vali = false;
+                    board.getPlayers().get(board.getTurn()).setPenalty(board.getPlayers().get(board.getTurn()).getPenalty() - 1);
+                    break;
+    
+                }
+            }
+        }
+
+        return vali;
+
+    }
+
+    private String dice(int value) {
+
+        String url = "/images/dice/";
+
+        switch (value) {
+           case 1:
+                return url + "de1.jpg";
+        
+            case 2:
+                return url + "de2.jpg";
+              
+            case 3:
+                return url + "de3.jpg";
+             
+            case 4:
+                return url + "de4.jpg";
+              
+            case 5:
+                return url + "de5.jpg";
+              
+            case 6:
+                return url + "de6.jpg";
+             
+            default:
+                return url + "de1.jpg";
+             
+        }
+        
+    }
+
+    //**************************************************************************************************************************
+    // Threads
+
+    public void actionFortuneCard(FortuneCards card) throws IOException{
+
+        show(new FXMLLoader(getClass().getResource("screens/pop-up/properties/viewWild.fxml")), new Stage());
+        imageWild.setImage(new Image(card.getCard()));
+        interaction();
+
+    }
+
+    public void actionCommunityCard(CommunityServiceCards card) throws IOException{
+        show(new FXMLLoader(getClass().getResource("screens/pop-up/properties/viewWild.fxml")), new Stage());
+        imageWild.setImage(new Image(card.getCard()));
+        interaction();
+
+    }
+
+    public void actionCommunSquare(CommunSquare communSquare) throws IOException{
+
+        if(communSquare.getAction() == 2){
+
+            alert("Mala Suerte", "Dirigete a la carcel para cumplir tu condena");
+            board.getPlayers().get(board.getTurn()).setPosition(10);
+            board.getPlayers().get(board.getTurn()).setPenalty(3);
+            board.getCommunSquare().get(2).getJail().add(board.getPlayers().get(board.getTurn()));
+            
+
+        }else if(communSquare.getAction() == 5){
+
+            alert("Mala Suerte", "Pagas un impuesto de " + communSquare.getTax());
+
+            if(board.getPlayers().get(board.getTurn()).getMoney() >= communSquare.getTax()){
+                board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() - communSquare.getTax());
+
+            }else{
+
+                //no tiene para pagar
+
+            }
+
+        }
+
+        
+        interaction();
+
+    }
+
+
+    public void actionProperties(Properties propertie) throws IOException{
+        
+        if(propertie.getOwner() != null){
+            if (board.getPlayers().get(board.getTurn()).getMoney() >= propertie.getMortgage()) {
+                board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() - propertie.getMortgage());
+                propertie.getOwner().setMoney(propertie.getOwner().getMoney() + propertie.getMortgage());
+                alert("Mala Suerte", "La propiedad tiene dueño y le pagaste $" +  propertie.getMortgage() + " de arriendo a " + propertie.getOwner().getNameToken());
+               
+            }else{
+                //si no tiene dinero sificiente para pagar
+
+            }
+
+        }else if(propertie.getOwner() == board.getPlayers().get(board.getTurn())){
+            //hacer casa y hoteles
+
+        }else{
+            show(new FXMLLoader(getClass().getResource("screens/pop-up/properties/viewProperti.fxml")), new Stage());
+            imageProperti.setImage(new Image(propertie.getProperty()));
+
+        }
+
+        interaction();
+       
+
+    }
+
+    //**************************************************************************************************************************
+    // Methods
+
+    private void alert(String title, String mss){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(mss);
+        alert.showAndWait();
+        
+    }
+
+    private void interaction() throws IOException{
+
+        refresh();
+
+        if(!(board.getPlayers().get(board.getTurn()).getPar())){
+
+            tokenOffSide();
+
+            if(board.getTurn() + 1 == board.getPlayers().size()){
+                board.setTurn(0);
+        
+            }else{
+                board.setTurn(board.getTurn() + 1);
+        
+            }
+
+            tokenInGame();
+
+        }
+     
+        buttonRollDice.setDisable(false);
+       
+    }
+
+    private void refresh(){
+
+        for(Token player : board.getPlayers().toArray()){
 
             int money = player.getMoney();
 
@@ -282,92 +537,133 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
     }
 
-   
-    public void initDice() throws IOException, InterruptedException {
 
-        int diceOne = 0;
-        int diceTwo = 0;
-
-        for(int i = 0; i < TRY; i++){
-
-            diceOne = (int) (Math.random()*5)+1;
-            diceTwo = (int) (Math.random()*5)+1;
-
-            dice1.setImage(new Image(dice(diceOne), 58, 58, true, true, true));
-            dice2.setImage(new Image(dice(diceTwo), 58, 58, true, true, true));
-            
-        }
-
-        numDice.setText(String.valueOf(diceOne + diceTwo));
-
-        if((diceOne + diceTwo) % 2 == 0){
-            alert("Sacaste un Numero PAR", "Puedes volver a tirar el dado");
-            board.getPlayers().get(board.getTurn()).setPenalty(board.getPlayers().get(board.getTurn()).getPenalty() + 1);
-            
+    @FXML
+    public void buyProperti(ActionEvent event) {
+       /* 
+        if (board.getPlayers().get(turn).getMoney() >= board.getPropertiesSquare().get(index).getCostProperty()) {
+            board.getPlayers().get(turn).setMoney(board.getPlayers().get(turn).getMoney() - board.getPropertiesSquare().get(index).getCostProperty());
+            board.getPropertiesSquare().get(index).setOwner(board.getPlayers().get(turn));
+               
         }else{
+            alert("Mala Suerte", "No cuentas con el dinero necesario para la compra");
+
+
+        }*/
+
+        
+
+    }
+
+    
+    @FXML
+    public void payJail(ActionEvent event) {
+
+        if(board.getPlayers().get(board.getTurn()).getMoney() >= 500){
+            board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() - 500);
             board.getPlayers().get(board.getTurn()).setPenalty(0);
-
-        }
-
-        if(board.getPlayers().get(board.getTurn()).getPosition() + diceOne + diceTwo < 40){
-            
-            board.getPlayers().get(board.getTurn()).setPosition(board.getPlayers().get(board.getTurn()).getPosition() + diceOne + diceTwo);
+            alert("Vaya", "Ya estas libre pero tienes que esperar al siguiente turno para jugar");
 
         }else{
-            board.getPlayers().get(board.getTurn()).setPosition(1 + ((diceOne + diceTwo) - (40 -  board.getPlayers().get(board.getTurn()).getPosition())));
-            board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() + 200);
-            
-            if(board.getTurn() + 1 > board.getPlayers().size() - 1){
-                board.setTurn(0);
-
-            }else{
-                board.setTurn(board.getTurn() + 1);
-
-            }
+            alert("Estas Pobre", "No tienes el dinero suficiente para pagar la fianza");
 
         }
-
         
 
     }
 
-    private String dice(int value) {
+    private void tokenInGame(){
 
-        String url = "/images/dice/";
+        String url = "/images/graphic/rectangleGameTurn.jpg";
 
-        switch (value) {
-           case 1:
-                return url + "de1.jpg";
-        
-            case 2:
-                return url + "de2.jpg";
-              
-            case 3:
-                return url + "de3.jpg";
-             
-            case 4:
-                return url + "de4.jpg";
-              
-            case 5:
-                return url + "de5.jpg";
-              
-            case 6:
-                return url + "de6.jpg";
-             
-            default:
-                return url + "de1.jpg";
-             
+        switch(board.getPlayers().get(board.getTurn()).getNameToken()){
+            case "BOAT":
+                imageViewBoat.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "HAT":
+                imageViewHat.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "HOLE":
+                imageViewHole.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "CAR":
+                imageViewCar.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "CAT":
+                imageViewCat.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "SHOES":
+                imageViewShoes.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "BOX":
+                imageViewBox.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "DOG":
+                imageViewDog.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
         }
-        
+
     }
 
-    public void alert(String title, String mss){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(mss);
-        alert.showAndWait();
-        
+    private void tokenOffSide(){
+
+        String url = "/images/graphic/rectangleGame.jpg";
+
+        switch(board.getPlayers().get(board.getTurn()).getNameToken()){
+            case "BOAT":
+                imageViewBoat.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "HAT":
+                imageViewHat.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "HOLE":
+                imageViewHole.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "CAR":
+                imageViewCar.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "CAT":
+                imageViewCat.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "SHOES":
+                imageViewShoes.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "BOX":
+                imageViewBox.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+            case "DOG":
+                imageViewDog.setImage(new Image(url, 548, 109, true, true, true));
+                break;
+
+        }
+
+    }
+
+    public void playerOrdering(ArrayList<Pane> panes){
+
+        for(int i = 0; i < panes.size(); i++){
+
+            GridPane.setConstraints(panes.get(i), 0, i);
+
+        }
+
+        tokenInGame();
+
     }
 	
 	

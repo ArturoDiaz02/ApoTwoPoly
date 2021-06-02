@@ -6,14 +6,13 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import data_structure.MeLinkedLists;
 import javafx.scene.image.ImageView;
-import objects.Player;
-
+import objects.Token;
 
 public class MeLinkedListTest {
 	
-	private MeLinkedLists<Player> list;
-	private ArrayList<Player> array;
-	private Player player;
+	private MeLinkedLists<Token> list;
+	private ArrayList<Token> array;
+	private Token player;
 
 	@Test
 	public void test() {
@@ -22,7 +21,7 @@ public class MeLinkedListTest {
 		list = new MeLinkedLists<>();
 		
 		for(int i = 0; i < 1000; i++) {
-			player = new Player(new ImageView());
+			player = new Token(new ImageView());
 			
 			list.add(player);
 			array.add(player);

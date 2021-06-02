@@ -1,12 +1,9 @@
 package objects;
 
 import java.io.Serializable;
-
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import data_structure.MeLinkedLists;
 
-public class Player implements Serializable{
+public abstract class Player implements Serializable{
   
 	private static final long serialVersionUID = 5780182730822343543L;
 	private MeLinkedLists<Square> properties;
@@ -15,25 +12,21 @@ public class Player implements Serializable{
     private int money;
     private int position;
     private String nameToken;
-    private ImageView token;
     private int penalty;
+    private boolean par;
 
-    public Player(MeLinkedLists<Square> properties, MeLinkedLists<CommunityServiceCards> especialCommunityCards, MeLinkedLists<FortuneCards> especialFortuneCards, int money, ImageView token, String nameToken) {
+    protected Player(MeLinkedLists<Square> properties, MeLinkedLists<CommunityServiceCards> especialCommunityCards, MeLinkedLists<FortuneCards> especialFortuneCards, int money,  String nameToken) {
         this.properties = properties;
         this.especialCommunityCards = especialCommunityCards;
         this.especialFortuneCards = especialFortuneCards;
         this.money = money;
         this.position = 0;
-        this.token = token;
         this.nameToken = nameToken;
         this.penalty = 0;
+        this.par = false;
     }
     
-    public Player(ImageView token) {
-    	this.token = token;
-    	
-    }
-
+    protected Player() {}
 
     public MeLinkedLists<Square> getProperties() {
         return this.properties;
@@ -83,14 +76,6 @@ public class Player implements Serializable{
         this.nameToken = nameToken;
     }
 
-    public ImageView getToken() {
-        return this.token;
-    }
-
-    public void setToken(ImageView token) {
-        this.token = token;
-    }
-
     public int getPenalty() {
         return this.penalty;
     }
@@ -98,44 +83,19 @@ public class Player implements Serializable{
     public void setPenalty(int penalty) {
         this.penalty = penalty;
     }
+
+    public boolean isPar() {
+        return this.par;
+    }
+
+    public boolean getPar() {
+        return this.par;
+    }
+
+    public void setPar(boolean par) {
+        this.par = par;
+    }
    
-
-  
-    
-    public void createPlayer() {
-    	
-    	
-    	
-    }
-
-    public ImageView moveUp(KeyCode event){
-
-        double x = token.getLayoutX();
-        double y = token.getLayoutY();
-
-        if(event == KeyCode.A){
-            x = x - 8;
-        }
-
-        if(event == KeyCode.D){
-            x = x + 8;
-        }
-
-        if(event == KeyCode.W){
-            y = y - 8;
-        }
-
-        if(event == KeyCode.S){
-            y = y + 8;
-        }
-
-        token.setLayoutX(x);
-        token.setLayoutY(y);
-
-        return token;
-        
-
-    }
 
     
 

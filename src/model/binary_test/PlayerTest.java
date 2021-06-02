@@ -1,15 +1,14 @@
 package binary_test;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import objects.Player;
+import objects.Token;
 
 public class PlayerTest {
 	
-	private Player player;
+	private Token player;
 	private ImageView boatTest;
 
 	@Test
@@ -17,7 +16,7 @@ public class PlayerTest {
 		
 		
 		boatTest = new ImageView();
-		player = new Player(boatTest);
+		player = new Token(boatTest);
 		
 		boatTest.setLayoutX(0);
 		boatTest.setLayoutY(0);

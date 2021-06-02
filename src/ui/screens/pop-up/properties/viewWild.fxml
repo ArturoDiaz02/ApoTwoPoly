@@ -4,14 +4,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="212.0" fitWidth="410.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="256.0" fitWidth="453.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@backgraund.jpg" />
+            <Image url="@../../../../images/backGrounds/backGraundDice.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="imageWild" fitHeight="182.0" fitWidth="353.0" layoutX="40.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageWild" fitHeight="182.0" fitWidth="353.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

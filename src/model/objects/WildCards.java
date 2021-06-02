@@ -4,7 +4,6 @@ public class WildCards extends Square {
 
 	private static final long serialVersionUID = 192875853834156303L;
 	private boolean typeWildCards; // true es community y false fortune
-    private int card;
 
     public WildCards(int numSquare, int typeSquare, boolean typeWildCards) {
         super(numSquare, typeSquare);

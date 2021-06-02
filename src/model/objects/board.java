@@ -10,13 +10,13 @@ public class Board implements Serializable {
 	private MeLinkedLists<Properties> propertiesSquare;
     private MeLinkedLists<WildCards> wildCardsSquare;
     private MeLinkedLists<CommunSquare> communSquare;
-    private MeLinkedLists<Player> players;
+    private MeLinkedLists<Token> players;
     private MeLinkedLists<CommunityServiceCards> communityServiceCards;
     private MeLinkedLists<FortuneCards> fortuneCards;
     private int turn;
 
 
-    public Board(MeLinkedLists<Properties> square1, MeLinkedLists<WildCards> square2, MeLinkedLists<CommunSquare> square3, MeLinkedLists<Player> players, MeLinkedLists<CommunityServiceCards> communityServiceCards, MeLinkedLists<FortuneCards> fortuneCards) {
+    public Board(MeLinkedLists<Properties> square1, MeLinkedLists<WildCards> square2, MeLinkedLists<CommunSquare> square3, MeLinkedLists<Token> players, MeLinkedLists<CommunityServiceCards> communityServiceCards, MeLinkedLists<FortuneCards> fortuneCards) {
         this.propertiesSquare = square1;
         this.wildCardsSquare = square2;
         this.communSquare = square3;
@@ -52,11 +52,11 @@ public class Board implements Serializable {
         this.communSquare = communSquare;
     }
 
-    public MeLinkedLists<Player> getPlayers() {
+    public MeLinkedLists<Token> getPlayers() {
         return this.players;
     }
 
-    public void setPlayers(MeLinkedLists<Player> players) {
+    public void setPlayers(MeLinkedLists<Token> players) {
         this.players = players;
     }
 

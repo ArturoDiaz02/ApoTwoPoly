@@ -1,23 +1,23 @@
 package threads;
 
+import java.io.IOException;
+
+import javafx.application.Platform;
 import objects.Board;
-import objects.CommunityServiceCards;
-import objects.FortuneCards;
 import objects.WildCards;
+import ui.ApoTwoPolyGUI;
 
 public class WildCardsThreads extends Thread{
 
     private Board board;
+    private ApoTwoPolyGUI gui;
     private int index = 0;
-    private int turn;
-    private int position;
     private WildCards wildCards;
-    private CommunityServiceCards communityServiceCards;
-    private FortuneCards fortuneCards;
 
-
-    public WildCardsThreads(Board board) {
+    public WildCardsThreads(Board board, ApoTwoPolyGUI gui) {
         this.board = board;
+        this.gui = gui;
+
 
     }
 
@@ -25,21 +25,46 @@ public class WildCardsThreads extends Thread{
     public void run(){
 
         wildCards = new WildCards();
-        communityServiceCards = new CommunityServiceCards();
-        fortuneCards = new FortuneCards();
 
-        int card = (int) Math.random()*14;
+        int card = (int) (Math.random()*14) + 1;
       
         for(WildCards square : board.getWildCardsSquare().toArray()){
             if(square.getNumSquare() == board.getPlayers().get(board.getTurn()).getPosition()){
 
                 if(board.getWildCardsSquare().get(index).isTypeWildCards()){
 
-                    communityServiceCards = wildCards.communityService(board, card);
+                    Platform.runLater(new Thread(){
+                        @Override
+                        public void run() {
+
+                            try {
+                                gui.actionCommunityCard(wildCards.communityService(board, card));
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+
+                            }
+                        }
+            
+                    });
 
                 }else{
-                    fortuneCards = wildCards.fortuneCard(board, card);
-                    
+
+                    Platform.runLater(new Thread(){
+                        @Override
+                        public void run() {
+
+                            try {
+                                gui.actionFortuneCard(wildCards.fortuneCard(board, card));
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                
+                            }
+                        }
+            
+                    });
+
                 }
                 
                 break;
@@ -48,14 +73,7 @@ public class WildCardsThreads extends Thread{
             index++;
         }
 
-        /*Platform.runLater(new Thread(){
-            @Override
-            public void run() {
-                gui.setBoard(axBoard);
-            }
-
-        });*/
-
+        
     }
 
 

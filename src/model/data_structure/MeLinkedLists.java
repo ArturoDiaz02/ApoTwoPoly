@@ -8,7 +8,7 @@ public class MeLinkedLists<E> implements Serializable {
 	private static final long serialVersionUID = 4L;
 	private Node<E> head;
     private Node<E> tail;
-    private int size;
+    private int size; 
 
     public MeLinkedLists() {
         head = null;

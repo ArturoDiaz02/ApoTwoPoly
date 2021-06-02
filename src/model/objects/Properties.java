@@ -23,6 +23,7 @@ public class Properties extends Square{
         this.owner = null;
     }
 
+    public Properties(){ }
 
     public String getProperty() {
         return this.property;
@@ -80,6 +81,8 @@ public class Properties extends Square{
         this.mortgage = mortgage;
     }
   
-    
+    public Properties propeties(Board board, int index){
+        return board.getPropertiesSquare().get(index);
+    }
     
 }
