@@ -65,7 +65,7 @@
                      </font>
                   </Label>
                   <Separator layoutX="315.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="100.0" />
-                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
+                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" onAction="#playerPropertiesBoat" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -96,7 +96,7 @@
                      </font>
                   </Label>
                   <Separator layoutX="315.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="100.0" />
-                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
+                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" onAction="#playerPropertiesBox" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -127,7 +127,7 @@
                      </font>
                   </Label>
                   <Separator layoutX="315.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="100.0" />
-                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
+                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" onAction="#playerPropertiesCar" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -158,7 +158,7 @@
                      </font>
                   </Label>
                   <Separator layoutX="315.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="100.0" />
-                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
+                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" onAction="#playerPropertiesCat" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -189,7 +189,7 @@
                      </font>
                   </Label>
                   <Separator layoutX="315.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="100.0" />
-                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
+                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" onAction="#playerPropertiesDog" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -220,7 +220,7 @@
                      </font>
                   </Label>
                   <Separator layoutX="315.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="100.0" />
-                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
+                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" onAction="#playerPropertiesHat" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -251,7 +251,7 @@
                      </font>
                   </Label>
                   <Separator layoutX="315.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="100.0" />
-                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
+                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" onAction="#playerPropertiesHole" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -282,7 +282,7 @@
                      </font>
                   </Label>
                   <Separator layoutX="315.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="100.0" />
-                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
+                  <Button layoutX="343.0" layoutY="35.0" mnemonicParsing="false" onAction="#playerPropertiesShoes" prefHeight="40.0" prefWidth="134.0" text="Propiedades">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -310,26 +310,6 @@
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></TextArea>
-      <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="148.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../images/houseAndHotel/house.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="168.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../images/houseAndHotel/house.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="189.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../images/houseAndHotel/house.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="209.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../images/houseAndHotel/house.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="tokenHat" fitHeight="54.0" fitWidth="49.0" layoutX="851.0" layoutY="936.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../../images/tokens/hat.png" />
@@ -362,5 +342,643 @@
          <image>
             <Image url="@../../../../images/tokens/cat.png" />
          </image></ImageView>
+      <Pane layoutX="154.0" layoutY="118.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house44" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house43" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house42" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house41" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel12" fitHeight="33.0" fitWidth="33.0" layoutX="27.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="308.0" layoutY="118.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house48" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house47" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house46" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house45" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel13" fitHeight="33.0" fitWidth="33.0" layoutX="26.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="387.0" layoutY="118.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house52" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house51" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house50" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house49" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel14" fitHeight="33.0" fitWidth="33.0" layoutX="25.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="541.0" layoutY="118.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house56" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house55" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house54" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house53" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel15" fitHeight="33.0" fitWidth="33.0" layoutX="27.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="620.0" layoutY="118.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house60" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house59" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house58" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house57" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel16" fitHeight="33.0" fitWidth="33.0" layoutX="25.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="773.0" layoutY="119.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house64" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house63" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house62" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house61" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel17" fitHeight="33.0" fitWidth="33.0" layoutX="27.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="101.0" layoutY="167.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house40" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house39" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house38" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house37" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel11" fitHeight="33.0" fitWidth="33.0" layoutX="22.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="101.0" layoutY="245.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house36" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house35" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house34" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house33" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel10" fitHeight="33.0" fitWidth="33.0" layoutX="26.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="101.0" layoutY="400.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house32" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house31" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house30" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house29" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel9" fitHeight="33.0" fitWidth="33.0" layoutX="25.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="101.0" layoutY="555.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house88" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house87" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house86" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house85" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel8" fitHeight="33.0" fitWidth="33.0" layoutX="21.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="101.0" layoutY="633.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house28" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house27" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house26" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house25" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel7" fitHeight="33.0" fitWidth="33.0" layoutX="25.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="101.0" layoutY="785.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house24" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house23" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house22" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house21" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel6" fitHeight="33.0" fitWidth="33.0" layoutX="23.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="154.0" layoutY="837.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house17" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house18" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house19" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house20" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel5" fitHeight="33.0" fitWidth="33.0" layoutX="26.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="232.0" layoutY="837.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house13" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house14" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house15" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house16" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel4" fitHeight="33.0" fitWidth="33.0" layoutX="22.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="386.0" layoutY="838.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house9" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house10" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house11" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house12" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel3" fitHeight="33.0" fitWidth="33.0" layoutX="25.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="618.0" layoutY="838.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house5" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house6" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house7" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house8" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel2" fitHeight="33.0" fitWidth="33.0" layoutX="23.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="768.0" layoutY="838.0" prefHeight="40.0" prefWidth="87.0">
+         <children>
+            <ImageView fx:id="house1" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house2" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house3" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house4" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel1" fitHeight="33.0" fitWidth="33.0" layoutX="25.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="817.0" layoutY="786.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house81" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house82" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house83" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house84" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel22" fitHeight="33.0" fitWidth="33.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="817.0" layoutY="634.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house77" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house78" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house79" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house80" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel21" fitHeight="33.0" fitWidth="33.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="818.0" layoutY="401.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house73" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house74" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house75" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house76" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel20" fitHeight="33.0" fitWidth="33.0" layoutX="22.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="818.0" layoutY="247.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house69" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house70" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house71" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house72" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel19" fitHeight="33.0" fitWidth="33.0" layoutX="25.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="818.0" layoutY="169.0" prefHeight="40.0" prefWidth="87.0" rotate="-90.0">
+         <children>
+            <ImageView fx:id="house65" fitHeight="26.0" fitWidth="22.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house66" fitHeight="26.0" fitWidth="22.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house67" fitHeight="26.0" fitWidth="22.0" layoutX="39.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="house68" fitHeight="26.0" fitWidth="22.0" layoutX="59.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/house.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hotel18" fitHeight="33.0" fitWidth="33.0" layoutX="22.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../images/houseAndHotel/hotel.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </Pane>

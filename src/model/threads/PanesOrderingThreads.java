@@ -1,6 +1,5 @@
 package threads;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.scene.layout.Pane;

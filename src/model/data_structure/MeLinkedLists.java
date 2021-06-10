@@ -3,7 +3,11 @@ package data_structure;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MeLinkedLists<E> implements Serializable {
+import interface_class.bSearch;
+import objects.CommunSquare;
+import objects.Token;
+
+public class MeLinkedLists<E> implements Serializable, bSearch {
 
 	private static final long serialVersionUID = 4L;
 	private Node<E> head;
@@ -30,6 +34,10 @@ public class MeLinkedLists<E> implements Serializable {
 
     public int size() {
         return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public void add(E e) {
@@ -76,6 +84,70 @@ public class MeLinkedLists<E> implements Serializable {
             return indexOf(e, temp.getNext(), contador + 1);
 
         }
+    }
+
+    @Override
+    public Token bSearchToken(int index){
+
+        int init = 0;
+        int fin = size - 1;
+        int mid = 0;
+        ArrayList<Token> array = toArrayToken();
+
+        while(init <= fin){
+
+            mid = (init + fin) / 2;
+
+            if(array.get(mid).getId() == index + 1){
+                break;
+
+            }else if(array.get(mid).getId() > index + 1){
+                fin = mid - 1;
+
+            }else{
+
+                init = mid + 1;
+            }
+
+
+        }
+
+        return array.get(mid);
+        
+
+    }
+
+    @Override
+    public CommunSquare bSearchCommunSquare(int index){
+
+        int mid = 0;
+        CommunSquare temp = null;
+        ArrayList<CommunSquare> array = toArrayCommunSquare();
+        int init = 0;
+        int fin = size - 1;
+
+        while(init <= fin){
+
+            mid = (init + fin) / 2;
+
+            if(array.get(mid).getNumSquare() == index){
+                temp = array.get(mid);
+                break;
+
+            }else if(array.get(mid).getNumSquare() > index){
+                fin = mid - 1;
+
+            }else if(array.get(mid).getNumSquare() < index){
+                init = mid + 1;
+
+            }
+
+
+        }
+
+        return temp;
+        
+
     }
 
     public E get(int index){
@@ -126,11 +198,48 @@ public class MeLinkedLists<E> implements Serializable {
         size -= 1;
     }
 
+    public void arrayToMeList(ArrayList<E> array){
+        
+        head = null;
+        tail = null;
+
+        for (int i = 0; i < array.size(); i++){
+            add(array.get(i));
+            
+        }
+
+
+    }
+
     public ArrayList<E> toArray(){
         ArrayList<E> array = new ArrayList<E>();
 
         for (int i = 0; i < size; i++){
             array.add(get(i));
+            
+        }
+
+        return array;
+
+    }
+
+    private ArrayList<Token> toArrayToken(){
+        ArrayList<Token> array = new ArrayList<>();
+
+        for (int i = 0; i < size; i++){
+            array.add((Token) get(i));
+            
+        }
+
+        return array;
+
+    }
+
+    private ArrayList<CommunSquare> toArrayCommunSquare(){
+        ArrayList<CommunSquare> array = new ArrayList<>();
+
+        for (int i = 0; i < size; i++){
+            array.add((CommunSquare) get(i));
             
         }
 

@@ -5,11 +5,12 @@ import objects.CommunSquare;
 import objects.CommunityServiceCards;
 import objects.FortuneCards;
 import objects.Properties;
+import objects.PublicServices;
+import objects.Train;
 import objects.WildCards;
 import java.io.IOException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import data_structure.MeLinkedLists;
 
 public class Load {
 
@@ -21,99 +22,93 @@ public class Load {
     public void escribir() throws IOException, ClassNotFoundException{
         
 
-        board = new Board(new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>() , new MeLinkedLists<>(), new MeLinkedLists<>(), new MeLinkedLists<>());
+        board = new Board();
         board.getCommunSquare().add(new CommunSquare(0, 2, 1, 0));
-        int[][] valors1 = {{0,10},{0,30},{0,90},{0,160},{0,250}};
-        int[] valors2 = {50, 50};
-        board.getPropertiesSquare().add(new Properties("/images/properties/SanLuisNorte.jpg", 0, 2, valors1, valors2 , 30, 1, 0));
+        int[] valors1 = {10,30,90,160,250};
+        board.getPropertiesSquare().add(new Properties("/images/properties/SanLuisNorte.jpg", 60, 2, valors1, 50 , 30, 1, 0, "imageViewSanLuisN", 1, 2, 0));
         board.getWildCardsSquare().add(new WildCards(2, 1, true));
-        int[][] valors3 = {{0,20},{0,60},{0,180},{0,320},{0,450}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/SanLuisSur.jpg", 0, 4, valors3, valors2, 30, 3, 0));
+        int[] valors3 = {20,60,180,320,450};
+        board.getPropertiesSquare().add(new Properties("/images/properties/SanLuisSur.jpg", 60, 4, valors3, 50, 30, 3, 0, "imageViewSanLuisS", 1, 2, 4));
         board.getCommunSquare().add(new CommunSquare(4, 2, 5, 200));
-        int[][] valors4 = {{0,25},{0,50},{0,100},{0,200}};
-        int[] valors5 = {0, 0};
-        board.getPropertiesSquare().add(new Properties("/images/properties/TrenNorte.jpg", 0, 25, valors4, valors5, 100, 5, 0));//ajustar
-        int[][] valors6 = {{0,30},{0,90},{0,270},{0,400},{0,550}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/FormosaEste.jpg", 0, 6, valors6, valors2, 50, 6, 0));
+        board.getTrainSquare().add(new Train("/images/properties/TrenNorte.jpg", 200, 25, 5, 0, 100, "imageViewTrenN"));
+        int[] valors6 = {30,90,270,400,550};
+        board.getPropertiesSquare().add(new Properties("/images/properties/FormosaEste.jpg", 100, 6, valors6, 50, 50, 6, 0, "imageViewFormosaE", 2, 3, 0));
         board.getWildCardsSquare().add(new WildCards(7, 1, false));
-        board.getPropertiesSquare().add(new Properties("/images/properties/FormosaNorte.jpg", 0, 6, valors6, valors2, 50, 8, 0));
-        int[][] valors7 = {{0,40},{0,100},{0,300},{0,450},{0,600}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/FormosaSur.jpg", 0, 8, valors7, valors2, 60, 9, 0));
+        board.getPropertiesSquare().add(new Properties("/images/properties/FormosaNorte.jpg", 100, 6, valors6, 50, 50, 8, 0, "imageViewFormosaN", 2 ,3, 4));
+        int[] valors7 = {40,100,300,450,600};
+        board.getPropertiesSquare().add(new Properties("/images/properties/FormosaSur.jpg", 120, 8, valors7, 50, 60, 9, 0, "imageViewFormosaS", 2, 3, 8));
         board.getCommunSquare().add(new CommunSquare(10, 2, 3, 0));
-        int[][] valors8 = {{0,50},{0,150},{0,450},{0,625},{0,750}};
-        int[] valors9 = {100, 100};
-        board.getPropertiesSquare().add(new Properties("/images/properties/SanJuanEste.jpg", 0, 10, valors8, valors9, 70, 11, 0));
-        board.getPropertiesSquare().add(new Properties("/images/properties/Electricidad.jpg", 0, 10, valors8, valors9, 70, 12, 0));//ajustar
-        board.getPropertiesSquare().add(new Properties("/images/properties/SanJuanSur.jpg", 0, 10, valors8, valors9, 70, 13, 0));
-        int[][] valors10 = {{0,60},{0,80},{0,500},{0,700},{0,900}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/SanJuanNorte.jpg", 0, 12, valors10, valors9, 80, 14, 0));
-        board.getPropertiesSquare().add(new Properties("/images/properties/TrenOeste.jpg", 0, 25, valors10, valors9, 100, 15, 0));//ajustar
-        int[][] valors11 = {{0,70},{0,200},{0,550},{0,750},{0,950}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/NeuquenEste.jpg", 0, 14, valors11, valors9, 90, 16, 0));
+        int[] valors8 = {50,150,450,625,750};
+        board.getPropertiesSquare().add(new Properties("/images/properties/SanJuanEste.jpg", 140, 10, valors8, 100, 70, 11, 0, "imageViewSanJuanE", 3, 3, 0));
+        board.getPublicServicesSquare().add(new PublicServices("/images/properties/Electricidad.jpg", 150, 12, 0, 75, "imageViewEnergi"));
+        board.getPropertiesSquare().add(new Properties("/images/properties/SanJuanSur.jpg", 140, 10, valors8, 100, 70, 13, 0, "imageViewSanJuanS", 3, 3, 4));
+        int[] valors10 = {60,80,500,700,900};
+        board.getPropertiesSquare().add(new Properties("/images/properties/SanJuanNorte.jpg", 160, 12, valors10, 100, 80, 14, 0, "imageViewSanJuanN", 3, 3, 8));
+        board.getTrainSquare().add(new Train("/images/properties/TrenOeste.jpg", 200, 25, 15, 0, 100, "imageViewTrenO"));
+        int[] valors11 = {70,200,550,750,950};
+        board.getPropertiesSquare().add(new Properties("/images/properties/NeuquenEste.jpg", 180, 14, valors11, 100, 90, 16, 0, "imageViewNeuquenE", 4, 3, 0));
         board.getWildCardsSquare().add(new WildCards(17, 1, true));
-        board.getPropertiesSquare().add(new Properties("/images/properties/NeuquenSur.jpg", 0, 14, valors11, valors9, 90, 18, 0));
-        int[][] valors12 = {{0,80},{0,220},{0,600},{0,800},{0,1000}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/NeuquenNorte.jpg", 0, 16, valors12, valors9, 100, 19, 0));
+        board.getPropertiesSquare().add(new Properties("/images/properties/NeuquenSur.jpg", 180, 14, valors11, 100, 90, 18, 0, "imageViewNeuquenS", 4, 3, 4));
+        int[] valors12 = {80,220,600,800,1000};
+        board.getPropertiesSquare().add(new Properties("/images/properties/NeuquenNorte.jpg", 200, 16, valors12, 100, 100, 19, 0, "imageViewNeuquenN", 4, 3, 8));
         board.getCommunSquare().add(new CommunSquare(20, 2, 4, 0));
-        int[][] valors13 = {{0,90},{0,250},{0,700},{0,875},{0,1050}};
-        int[] valors14 = {150, 150};
-        board.getPropertiesSquare().add(new Properties("/images/properties/MendozaEste.jpg", 0, 18, valors13, valors14, 110, 21, 0));
+        int[] valors13 = {90,250,700,875,1050};
+        board.getPropertiesSquare().add(new Properties("/images/properties/MendozaEste.jpg", 220, 18, valors13, 150, 110, 21, 0, "imageViewMendozaE", 5, 3, 0));
         board.getWildCardsSquare().add(new WildCards(22, 1, false));
-        board.getPropertiesSquare().add(new Properties("/images/properties/MendozaSur.jpg", 0, 18, valors13, valors14, 110, 23, 0));
-        int[][] valors15 = {{0,100},{0,300},{0,750},{0,925},{0,1100}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/MendozaNorte.jpg", 0, 20, valors15, valors14, 120, 24, 0));
-        board.getPropertiesSquare().add(new Properties("/images/properties/TrenEste.jpg", 0, 25, valors10, valors9, 100, 25, 0));//ajustar
-        int[][] valors16 = {{0,110},{0,330},{0,800},{0,975},{0,1150}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/SantaFeEste.jpg", 0, 22, valors16, valors14, 130, 26, 0));
-        board.getPropertiesSquare().add(new Properties("/images/properties/SantaFeSur.jpg", 0, 22, valors16, valors14, 130, 27, 0));
-        board.getPropertiesSquare().add(new Properties("/images/properties/Agua.jpg", 0, 10, valors8, valors9, 70, 28, 0));//ajustar
-        int[][] valors17 = {{0,120},{0,360},{0,850},{0,1025},{0,1200}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/SantaFeNorte.jpg", 0, 24, valors17, valors14, 140, 29, 0));
+        board.getPropertiesSquare().add(new Properties("/images/properties/MendozaSur.jpg", 220, 18, valors13, 150, 110, 23, 0, "imageViewMendozaS", 5, 3, 4));
+        int[] valors15 = {100,300,750,925,1100};
+        board.getPropertiesSquare().add(new Properties("/images/properties/MendozaNorte.jpg", 240, 20, valors15, 150, 120, 24, 0, "imageViewMendozaN", 5, 3, 8));
+        board.getTrainSquare().add(new Train("/images/properties/TrenEste.jpg", 200, 25, 25, 0, 100, "imageViewTrenE"));
+        int[] valors16 = {110,330,800,975,1150};
+        board.getPropertiesSquare().add(new Properties("/images/properties/SantaFeEste.jpg", 260, 22, valors16, 150, 130, 26, 0, "imageViewSantaFeE", 6, 3, 0));
+        board.getPropertiesSquare().add(new Properties("/images/properties/SantaFeSur.jpg", 260, 22, valors16, 150, 130, 27, 0, "imageViewSantaFeS", 6, 3, 4));
+        board.getPublicServicesSquare().add(new PublicServices("/images/properties/Agua.jpg", 150, 28, 0, 75, "imageViewWater"));//ajustar
+        int[] valors17 = {120,360,850,1025,1200};
+        board.getPropertiesSquare().add(new Properties("/images/properties/SantaFeNorte.jpg", 280, 24, valors17, 150, 140, 29, 0, "imageViewSantaFeN", 6, 3, 8));
         board.getCommunSquare().add(new CommunSquare(30, 2, 2, 0));
-        int[][] valors18 = {{0,130},{0,390},{0,900},{0,1100},{0,1275}};
-        int[] valors19 = {200, 200};
-        board.getPropertiesSquare().add(new Properties("/images/properties/CordobaEste.jpg", 0, 26, valors18, valors19, 150, 31, 0));
-        board.getPropertiesSquare().add(new Properties("/images/properties/CordobaSur.jpg", 0, 26, valors18, valors19, 150, 32, 0));
+        int[] valors18 = {130,390,900,1100,1275};
+        board.getPropertiesSquare().add(new Properties("/images/properties/CordobaEste.jpg", 300, 26, valors18, 200, 150, 31, 0, "imageViewCordobaE", 7, 3, 0));
+        board.getPropertiesSquare().add(new Properties("/images/properties/CordobaSur.jpg", 300, 26, valors18, 200, 150, 32, 0, "imageViewCordobaS", 7, 3, 4));
         board.getWildCardsSquare().add(new WildCards(33, 1, true));
-        int[][] valors20 = {{0,150},{0,450},{0,1000},{0,1200},{0,1400}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/CordobaNorte.jpg", 0, 28, valors20, valors19, 160, 34, 0));
-        board.getPropertiesSquare().add(new Properties("/images/properties/TrenSur.jpg", 0, 25, valors10, valors9, 100, 35, 0));//ajustar
+        int[] valors20 = {150,450,1000,1200,1400};
+        board.getPropertiesSquare().add(new Properties("/images/properties/CordobaNorte.jpg", 320, 28, valors20, 200, 160, 34, 0, "imageViewCordobaN", 7, 3, 8));
+        board.getTrainSquare().add(new Train("/images/properties/TrenSur.jpg", 200, 25, 5, 0, 100, "imageViewTrenS"));
         board.getWildCardsSquare().add(new WildCards(36, 1, false));
-        int[][] valors21 = {{0,175},{0,500},{0,1100},{0,1300},{0,1500}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/BuenosAiresNorte.jpg", 0, 35, valors21, valors19, 175, 37, 0));
+        int[] valors21 = {175,500,1100,1300,1500};
+        board.getPropertiesSquare().add(new Properties("/images/properties/BuenosAiresNorte.jpg", 350, 35, valors21, 200, 175, 37, 0, "imageViewBuenosAiresN", 8, 2, 0));
         board.getCommunSquare().add(new CommunSquare(38, 2, 5, 75));
-        int[][] valors22 = {{0,200},{0,600},{0,1400},{0,1700},{0,2000}};
-        board.getPropertiesSquare().add(new Properties("/images/properties/BuenosAiresSur.jpg", 0, 50, valors22, valors19, 200, 39, 0));
+        int[] valors22 = {200,600,1400,1700,2000};
+        board.getPropertiesSquare().add(new Properties("/images/properties/BuenosAiresSur.jpg", 400, 50, valors22, 200, 200, 39, 0, "imageViewBuenosAiresS", 8, 2, 4));
 
 
+        board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/7.jpg", 7));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/1.jpg", 1));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/2.jpg", 2));
+        board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/5.jpg", 5));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/3.jpg", 3));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/4.jpg", 4));
-        board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/5.jpg", 5));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/6.jpg", 6));
-        board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/7.jpg", 7));
-        board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/8.jpg", 8));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/9.jpg", 9));
+        board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/8.jpg", 8));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/10.jpg", 10));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/11.jpg", 11));
-        board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/12.jpg", 12));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/13.jpg", 13));
         board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/14.jpg", 14));
+        board.getCommunityServiceCards().add(new CommunityServiceCards("/images/cards/community/12.jpg", 12));
 
+        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/7.jpg", 7));
         board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/1.jpg", 1));
         board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/2.jpg", 2));
-        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/3.jpg", 3));
-        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/4.jpg", 4));
+        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/13.jpg", 13));
         board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/5.jpg", 5));
-        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/6.jpg", 6));
-        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/7.jpg", 7));
-        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/8.jpg", 8));
-        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/9.jpg", 9));
         board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/10.jpg", 10));
+        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/6.jpg", 6));
+        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/8.jpg", 8));
+        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/4.jpg", 4));
+        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/9.jpg", 9));
         board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/11.jpg", 11));
         board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/12.jpg", 12));
-        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/13.jpg", 13));
+        board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/3.jpg", 3));
         board.getFortuneCards().add(new FortuneCards("/images/cards/fortune/14.jpg", 14));
     
 

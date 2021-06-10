@@ -1,18 +1,19 @@
 package objects;
 
-import data_structure.MeLinkedLists;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import interface_class.Move;
 
-public class Token extends Player{
+public class Token extends Player implements Move{
     
-    private ImageView token;
-    private static final int PIXEL = 8;
+	private static final long serialVersionUID = -7576993220422954011L;
+	private ImageView token;
+    private int id;
 
-
-    public Token(MeLinkedLists<Square> properties, MeLinkedLists<CommunityServiceCards> especialCommunityCards, MeLinkedLists<FortuneCards> especialFortuneCards, int money, ImageView token, String nameToken) {
-        super(properties, especialCommunityCards, especialFortuneCards, money, nameToken);
+    public Token(int money, ImageView token, String nameToken, int id) {
+        super(money, nameToken);
         this.token = token;
+        this.id = id;
         
     }
 
@@ -20,6 +21,7 @@ public class Token extends Player{
         super();
         this.token = token;
     }
+
 
     public ImageView getToken() {
         return this.token;
@@ -29,25 +31,33 @@ public class Token extends Player{
         this.token = token;
     }
 
+    public int getId() {
+        return this.id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    @Override
     public ImageView moveUp(KeyCode event){
 
         double x = token.getLayoutX();
         double y = token.getLayoutY();
 
-        if(event == KeyCode.A){
+        if(event == KeyCode.A && x - PIXEL >= 22){
             x = x - PIXEL;
         }
 
-        if(event == KeyCode.D){
+        if(event == KeyCode.D && x + PIXEL <= 953){
             x = x + PIXEL;
         }
 
-        if(event == KeyCode.W){
+        if(event == KeyCode.W && y - PIXEL >= 16){
             y = y - PIXEL;
         }
 
-        if(event == KeyCode.S){
+        if(event == KeyCode.S && y + PIXEL <= 936){
             y = y + PIXEL;
         }
 

@@ -2,31 +2,34 @@ package objects;
 
 import java.io.Serializable;
 
+import data_structure.BinaryTreeCommunity;
+import data_structure.BinaryTreeFortune;
 import data_structure.MeLinkedLists;
 
 public class Board implements Serializable {
 
 	private static final long serialVersionUID = 262921139849267465L;
 	private MeLinkedLists<Properties> propertiesSquare;
+    private MeLinkedLists<Train> trainSquare;
+    private MeLinkedLists<PublicServices> publicServicesSquare;
     private MeLinkedLists<WildCards> wildCardsSquare;
     private MeLinkedLists<CommunSquare> communSquare;
     private MeLinkedLists<Token> players;
-    private MeLinkedLists<CommunityServiceCards> communityServiceCards;
-    private MeLinkedLists<FortuneCards> fortuneCards;
+    private BinaryTreeCommunity communityServiceCards;
+    private BinaryTreeFortune fortuneCards;
     private int turn;
 
-
-    public Board(MeLinkedLists<Properties> square1, MeLinkedLists<WildCards> square2, MeLinkedLists<CommunSquare> square3, MeLinkedLists<Token> players, MeLinkedLists<CommunityServiceCards> communityServiceCards, MeLinkedLists<FortuneCards> fortuneCards) {
-        this.propertiesSquare = square1;
-        this.wildCardsSquare = square2;
-        this.communSquare = square3;
-        this.players = players;
-        this.communityServiceCards = communityServiceCards;
-        this.fortuneCards = fortuneCards;
+    public Board() {
+        this.propertiesSquare = new MeLinkedLists<>();
+        this.wildCardsSquare = new MeLinkedLists<>();
+        this.communSquare = new MeLinkedLists<>();
+        this.players = new MeLinkedLists<>();
+        this.communityServiceCards = new BinaryTreeCommunity();
+        this.fortuneCards = new BinaryTreeFortune();
+        this.trainSquare = new MeLinkedLists<>();
+        this.publicServicesSquare = new MeLinkedLists<>();
         turn = 0;
     }
-
-    public Board(){}
 
     public MeLinkedLists<Properties> getPropertiesSquare() {
         return this.propertiesSquare;
@@ -34,6 +37,22 @@ public class Board implements Serializable {
 
     public void setPropertiesSquare(MeLinkedLists<Properties> propertiesSquare) {
         this.propertiesSquare = propertiesSquare;
+    }
+
+    public MeLinkedLists<Train> getTrainSquare() {
+        return this.trainSquare;
+    }
+
+    public void setTrainSquare(MeLinkedLists<Train> trainSquare) {
+        this.trainSquare = trainSquare;
+    }
+
+    public MeLinkedLists<PublicServices> getPublicServicesSquare() {
+        return this.publicServicesSquare;
+    }
+
+    public void setPublicServicesSquare(MeLinkedLists<PublicServices> publicServicesSquare) {
+        this.publicServicesSquare = publicServicesSquare;
     }
 
     public MeLinkedLists<WildCards> getWildCardsSquare() {
@@ -60,19 +79,19 @@ public class Board implements Serializable {
         this.players = players;
     }
 
-    public MeLinkedLists<CommunityServiceCards> getCommunityServiceCards() {
+    public BinaryTreeCommunity getCommunityServiceCards() {
         return this.communityServiceCards;
     }
 
-    public void setCommunityServiceCards(MeLinkedLists<CommunityServiceCards> communityServiceCards) {
+    public void setCommunityServiceCards(BinaryTreeCommunity communityServiceCards) {
         this.communityServiceCards = communityServiceCards;
     }
 
-    public MeLinkedLists<FortuneCards> getFortuneCards() {
+    public BinaryTreeFortune getFortuneCards() {
         return this.fortuneCards;
     }
 
-    public void setFortuneCards(MeLinkedLists<FortuneCards> fortuneCards) {
+    public void setFortuneCards(BinaryTreeFortune fortuneCards) {
         this.fortuneCards = fortuneCards;
     }
 

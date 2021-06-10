@@ -62,8 +62,5 @@ public class CommunSquare extends Square{
 
     }
 
-    public CommunSquare communSquare(Board board, int index){
-        return board.getCommunSquare().get(index);
-    }
 
 }

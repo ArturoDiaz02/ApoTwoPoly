@@ -6,50 +6,67 @@ import data_structure.MeLinkedLists;
 public abstract class Player implements Serializable{
   
 	private static final long serialVersionUID = 5780182730822343543L;
-	private MeLinkedLists<Square> properties;
-    private MeLinkedLists<CommunityServiceCards> especialCommunityCards;
-    private MeLinkedLists<FortuneCards> especialFortuneCards;
+	private MeLinkedLists<Properties> properties;
+    private MeLinkedLists<Train> trains;
+    private MeLinkedLists<PublicServices> publicServices;
+    private boolean especialCards;
     private int money;
     private int position;
     private String nameToken;
     private int penalty;
     private boolean par;
+    private boolean jail;
 
-    protected Player(MeLinkedLists<Square> properties, MeLinkedLists<CommunityServiceCards> especialCommunityCards, MeLinkedLists<FortuneCards> especialFortuneCards, int money,  String nameToken) {
-        this.properties = properties;
-        this.especialCommunityCards = especialCommunityCards;
-        this.especialFortuneCards = especialFortuneCards;
+    protected Player(int money,  String nameToken) {
+        this.properties = new MeLinkedLists<>();
+        this.trains = new MeLinkedLists<>();
+        this.publicServices = new MeLinkedLists<>();
+        this.especialCards = false;
         this.money = money;
         this.position = 0;
         this.nameToken = nameToken;
         this.penalty = 0;
         this.par = false;
+        this.jail = false;
     }
     
     protected Player() {}
 
-    public MeLinkedLists<Square> getProperties() {
+
+    public MeLinkedLists<Properties> getProperties() {
         return this.properties;
     }
 
-    public void setProperties(MeLinkedLists<Square> properties) {
+    public void setProperties(MeLinkedLists<Properties> properties) {
         this.properties = properties;
     }
 
-    public MeLinkedLists<CommunityServiceCards> getEspecialCommunityCards() {
-        return this.especialCommunityCards;
+    public MeLinkedLists<Train> getTrains() {
+        return this.trains;
     }
 
-    public void setEspecialCommunityCards(MeLinkedLists<CommunityServiceCards> especialCommunityCards) {
-        this.especialCommunityCards = especialCommunityCards;
+    public void setTrains(MeLinkedLists<Train> trains) {
+        this.trains = trains;
     }
 
-    public MeLinkedLists<FortuneCards> getEspecialFortuneCards() {
-        return this.especialFortuneCards;
+    public MeLinkedLists<PublicServices> getPublicServices() {
+        return this.publicServices;
     }
 
-    public void setEspecialFortuneCards(MeLinkedLists<FortuneCards> especialFortuneCards) {
-        this.especialFortuneCards = especialFortuneCards;
+    public void setPublicServices(MeLinkedLists<PublicServices> publicServices) {
+        this.publicServices = publicServices;
+    }
+
+    public boolean isEspecialCards() {
+        return this.especialCards;
+    }
+
+    public boolean getEspecialCards() {
+        return this.especialCards;
+    }
+
+    public void setEspecialCards(boolean especialCards) {
+        this.especialCards = especialCards;
     }
 
     public int getMoney() {
@@ -95,7 +112,18 @@ public abstract class Player implements Serializable{
     public void setPar(boolean par) {
         this.par = par;
     }
-   
+
+    public boolean isJail() {
+        return this.jail;
+    }
+
+    public boolean getJail() {
+        return this.jail;
+    }
+
+    public void setJail(boolean jail) {
+        this.jail = jail;
+    }
 
     
 

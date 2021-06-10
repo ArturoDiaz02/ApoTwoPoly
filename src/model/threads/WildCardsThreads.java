@@ -39,6 +39,7 @@ public class WildCardsThreads extends Thread{
 
                             try {
                                 gui.actionCommunityCard(wildCards.communityService(board, card));
+                                gui.setBoard(wildCards.communityService(board, card).action(board));
 
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -56,6 +57,7 @@ public class WildCardsThreads extends Thread{
 
                             try {
                                 gui.actionFortuneCard(wildCards.fortuneCard(board, card));
+                                gui.setBoard(wildCards.fortuneCard(board, card).action(board));
 
                             } catch (IOException e) {
                                 e.printStackTrace();

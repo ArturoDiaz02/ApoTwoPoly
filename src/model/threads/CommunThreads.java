@@ -10,8 +10,6 @@ import ui.ApoTwoPolyGUI;
 public class CommunThreads extends Thread{
 
     private Board board;
-    private int index = 0;
-    private CommunSquare propertie;
     private ApoTwoPolyGUI gui;
     
 
@@ -24,32 +22,25 @@ public class CommunThreads extends Thread{
     @Override
     public void run(){
 
-        propertie = new CommunSquare();
+        CommunSquare temp = board.getCommunSquare().bSearchCommunSquare(board.getPlayers().get(board.getTurn()).getPosition());
 
-        for(CommunSquare square : board.getCommunSquare().toArray()){
-            
-            if(square.getNumSquare() == board.getPlayers().get(board.getTurn()).getPosition()){
+        if(temp != null){
 
-                Platform.runLater(new Thread(){
-                    @Override
-                    public void run() {
+            Platform.runLater(new Thread(){
+                @Override
+                public void run() {
 
-                        try {
-                            gui.actionCommunSquare(square.communSquare(board, index));
+                    try {
+                        gui.actionCommunSquare(temp);
 
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
 
-                        }
                     }
-        
-                });
+                }
+    
+            });
 
-                break;
-                
-            }
-
-            index++;
         }
 
         

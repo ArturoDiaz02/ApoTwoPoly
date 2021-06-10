@@ -18,6 +18,7 @@ public class Main extends Application{
 
     public Main() throws ClassNotFoundException, FileNotFoundException, IOException {
     	this.gui = new ApoTwoPolyGUI((Board) ois.readObject());
+        //this.gui = new ApoTwoPolyGUI();
         ois.close();
 
 	}
