@@ -23,6 +23,9 @@ public class Token extends Player implements Move{
     }
 
 
+    public Token() {
+    }
+
     public ImageView getToken() {
         return this.token;
     }

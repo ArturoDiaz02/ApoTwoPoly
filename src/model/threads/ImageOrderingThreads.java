@@ -149,21 +149,17 @@ public class ImageOrderingThreads extends Thread{
 
         }
 
+        Platform.runLater(() -> {
+            try {
+                gui.propertiesOrdering(imagesViews);
 
-        Platform.runLater(new Thread(){
-            @Override
-            public void run() {
-                try {
-                    gui.propertiesOrdering(imagesViews);
+            } catch (IOException e) {
+                e.printStackTrace();
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-
-                }
-                
             }
 
-        });
+            }
+        );
         
     }
 

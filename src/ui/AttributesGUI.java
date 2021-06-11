@@ -1,9 +1,15 @@
 package ui;
 
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -11,7 +17,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import objects.Board;
 import objects.Properties;
+import threads.ChartThreads;
 import threads.CommunThreads;
+import threads.DealThreads;
 import threads.ImageOrderingThreads;
 import threads.PanesOrderingThreads;
 import threads.PlayerProperties;
@@ -213,7 +221,25 @@ public abstract class AttributesGUI {
     @FXML protected Label costPropertie;
     @FXML protected TextArea registerLabel;
     @FXML protected Button buttonRollDice;
+    @FXML protected Button buttomViewPropertie;
     @FXML protected GridPane gridPaneGame;
+    @FXML protected ComboBox<String> choicePurchasers;
+    @FXML protected ComboBox<String> choisePrBidder;
+    @FXML protected TextArea moneyBidder;
+    @FXML protected ComboBox<String> choisePrPurchaser;
+    @FXML protected TextArea moneyPurchaser;
+    @FXML protected TableView<Properties> tableViewPrBidder;
+    @FXML protected TableColumn<Properties, String> namePrBidder;
+    @FXML protected TableView<Properties> tableViewPrPurchaser;
+    @FXML protected TableColumn<Properties, String> namePrPurchaser;
+    @FXML protected TableView<Properties> tableViewMortgage;
+    @FXML protected TableColumn<Properties, String> nameProperties;
+    @FXML protected TableColumn<Properties, Integer> mortgagePropertie;
+    @FXML protected Label labelMortgageTotal;
+    @FXML protected ComboBox<String> choisMortgageProperties;
+    @FXML protected BarChart<String, Number> chartPatrimony;
+    @FXML protected CategoryAxis axisNameToken;
+    @FXML protected NumberAxis axisMoney;
 
     //**************************************************************************
     // Attributes
@@ -231,6 +257,9 @@ public abstract class AttributesGUI {
     protected TrainThreads threadTrain;
     protected ImageOrderingThreads threadImageOrdering;
     protected PlayerProperties threadPlayerProperties;
+    protected DealThreads threadsDeal;
+    protected boolean valiAction = true;
+    protected ChartThreads threadsChart;
     
     
    

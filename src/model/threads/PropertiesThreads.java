@@ -35,69 +35,67 @@ public class PropertiesThreads extends Thread{
             
             if(square.getNumSquare() == board.getPlayers().get(board.getTurn()).getPosition()){
 
-                Platform.runLater(new Thread(){
-                    @Override
-                    public void run() {
+                Platform.runLater(() -> {
 
-                        try {
+                    try {
 
-                            if(typeSearch){
+                        if(typeSearch){
 
-                                gui.actionProperties(propertie.propeties(board, index));
+                            gui.actionProperties(propertie.propeties(board, index));
 
-                            }else{
+                        }else{
 
-                                if (board.getPlayers().get(board.getTurn()).getMoney() >= square.getCostProperty()) {
-                                    board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() - square.getCostProperty());
-                                    square.setOwner(board.getPlayers().get(board.getTurn()));
-                                    board.getPlayers().get(board.getTurn()).getProperties().add(square);
+                            if (board.getPlayers().get(board.getTurn()).getMoney() >= square.getCostProperty()) {
+                                board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() - square.getCostProperty());
+                                square.setOwner(board.getPlayers().get(board.getTurn()));
+                                board.getPlayers().get(board.getTurn()).getProperties().add(square);
 
-                                    ArrayList<Properties> arrayPropetie =  board.getPlayers().get(board.getTurn()).getProperties().toArray();
+                                ArrayList<Properties> arrayPropetie =  board.getPlayers().get(board.getTurn()).getProperties().toArray();
 
-                                    //Selection Sort
-                                    for (int i = 0; i < arrayPropetie.size() - 1; i++){
+                                //Selection Sort
+                                for (int i = 0; i < arrayPropetie.size() - 1; i++){
 
-                                        int min = i;
+                                    int min = i;
 
-                                        for (int j = i + 1; j < arrayPropetie.size(); j++){
-                                            if (arrayPropetie.get(j).getFamily() < arrayPropetie.get(min).getFamily()){
-                                                min = j;
-
-                                            }
-                                        }
-
-                                        if (i != min) {
-                                            Properties aux = arrayPropetie.get(i);
-                                            arrayPropetie.set(i, arrayPropetie.get(min));
-                                            arrayPropetie.set(min, aux);
+                                    for (int j = i + 1; j < arrayPropetie.size(); j++){
+                                        if (arrayPropetie.get(j).getFamily() < arrayPropetie.get(min).getFamily()){
+                                            min = j;
 
                                         }
+                                    }
+
+                                    if (i != min) {
+                                        Properties aux = arrayPropetie.get(i);
+                                        arrayPropetie.set(i, arrayPropetie.get(min));
+                                        arrayPropetie.set(min, aux);
 
                                     }
 
-                                    board.getPlayers().get(board.getTurn()).getProperties().arrayToMeList(arrayPropetie);
-                                    board.getPlayers().get(board.getTurn()).getProperties().setSize(arrayPropetie.size());
-
-                                    gui.setBoard(board);
-                                    gui.mainLeave(new ActionEvent());
-                                       
-                                }else{
-                                    alert("Mala Suerte", "No cuentas con el dinero necesario para la compra");
-                        
                                 }
 
+                                board.getPlayers().get(board.getTurn()).getProperties().arrayToMeList(arrayPropetie);
+                                board.getPlayers().get(board.getTurn()).getProperties().setSize(arrayPropetie.size());
 
+                                gui.setBoard(board);
+                                gui.mainLeave(new ActionEvent());
+                                   
+                            }else{
+                                alert("Mala Suerte", "No cuentas con el dinero necesario para la compra");
+                    
                             }
 
-                            
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
 
                         }
+
+                        
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+
                     }
         
-                });
+                    }
+                );
 
                 break;
                 

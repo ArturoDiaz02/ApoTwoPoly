@@ -2,15 +2,15 @@ package objects;
 
 public class Train extends Properties{
 
-    public Train(String property, int costProperty, int rentalProperty, int numSquare, int typeSquare, int mortgage, String imageView) {
-        super(property, costProperty, rentalProperty, numSquare, typeSquare, mortgage, imageView);
+    public Train(String property, int costProperty, int rentalProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name) {
+        super(property, costProperty, rentalProperty, numSquare, typeSquare, mortgage, imageView, name);
+    }
+
+    public Train(Properties pr) {
+        super(pr.getProperty(), pr.getCostProperty(), pr.getRentalProperty(), pr.getNumSquare(), pr.getTypeSquare(), pr.getMortgage(), pr.getImageView(), pr.getName());
     }
 
     public Train(){}
-
-    public void action(){
-        
-    }
 
     @Override
     public Train propeties(Board board, int index){

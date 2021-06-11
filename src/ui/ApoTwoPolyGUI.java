@@ -2,37 +2,31 @@ package ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import objects.Board;
-import objects.CommunSquare;
-import objects.CommunityServiceCards;
-import objects.FortuneCards;
-import objects.Properties;
-import objects.PublicServices;
-import objects.Token;
-import objects.Train;
-import threads.CommunThreads;
-import threads.HousesAndHotelThreads;
-import threads.ImageOrderingThreads;
-import threads.PanesOrderingThreads;
-import threads.PlayerProperties;
-import threads.PropertiesThreads;
-import threads.PublicServicesThreads;
-import threads.TrainThreads;
-import threads.WildCardsThreads;
-
+import objects.*;
+import threads.*;
+  
 public class ApoTwoPolyGUI extends AttributesGUI{
 
     //**************************************************************************
@@ -50,6 +44,7 @@ public class ApoTwoPolyGUI extends AttributesGUI{
     }
 
     public void setBoard(Board board) throws IOException{ this.board = board; refresh();}
+    public Board getBoard() throws IOException{ return board; }
     public void setLocalStage(Stage stage){ this.localStage = stage;}
 
     //**************************************************************************
@@ -61,6 +56,67 @@ public class ApoTwoPolyGUI extends AttributesGUI{
         mainLeave(event);
         show(new FXMLLoader(getClass().getResource("screens/game_screens/tokens_scene/selectPlayers.fxml")), new Stage());
 
+    }
+
+    @FXML
+    public void goCharts(ActionEvent event) throws IOException {
+        show(new FXMLLoader(getClass().getResource("screens/pop-up/graphic/Graphic.fxml")), new Stage());
+
+        ArrayList<XYChart.Series<String, Number>> arraySeries = new ArrayList<>();
+        String[] types = {"Efectivo", "Valor Propiedades", "Poder de Hipoteca"};
+
+        for(int i = 0; i < types.length; i++){
+            XYChart.Series<String, Number> serie = new XYChart.Series<>();
+            serie.setName(types[i]);
+
+            for(Token tk : board.getPlayers().toArray()){
+
+                if(i == 0){
+                    serie.getData().add(new XYChart.Data<>(tk.getNameToken(), tk.getMoney()));
+
+                }else{
+
+                    int value = 0;
+                    int mortgage = 0;
+        
+                    for(Properties pr : tk.getProperties().toArray()){
+        
+                        value += pr.getCostProperty();
+                        mortgage += pr.getMortgage();
+        
+                    }
+        
+                    for(Properties pr : tk.getTrains().toArray()){
+        
+                        value += pr.getCostProperty();
+                        mortgage += pr.getMortgage();
+        
+                    }
+        
+                    for(Properties pr : tk.getPublicServices().toArray()){
+        
+                        value += pr.getCostProperty();
+                        mortgage += pr.getMortgage();
+        
+                    }
+
+                    if(i == 1){
+                        serie.getData().add(new XYChart.Data<>(tk.getNameToken(), value));
+
+                    }else{
+                        serie.getData().add(new XYChart.Data<>(tk.getNameToken(), mortgage));
+                    }
+
+                }
+
+            }
+
+            arraySeries.add(serie);
+
+        }
+
+        chartPatrimony.getData().addAll(arraySeries);
+        
     }
 
     @FXML
@@ -152,8 +208,58 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
     @FXML
     public void goDeal(ActionEvent event) throws IOException, ClassNotFoundException {
-        
+
         show(new FXMLLoader(getClass().getResource("screens/pop-up/deal/Deal.fxml")), new Stage());
+
+        ArrayList<String> arrayPrBidder = new ArrayList<>();
+        ArrayList<String> arrayNamePlayers = new ArrayList<>();
+
+        if(!(board.getPlayers().get(board.getTurn()).getProperties().isEmpty())){
+
+            for(Properties pr : board.getPlayers().get(board.getTurn()).getProperties().toArray()){
+                arrayPrBidder.add(pr.getName());
+
+
+            }
+
+        }
+
+        if(!(board.getPlayers().get(board.getTurn()).getPublicServices().isEmpty())){
+
+            for(Properties pr : board.getPlayers().get(board.getTurn()).getPublicServices().toArray()){
+                arrayPrBidder.add(pr.getName());
+
+
+            }
+
+        }
+
+        if(!(board.getPlayers().get(board.getTurn()).getTrains().isEmpty())){
+
+            for(Properties pr : board.getPlayers().get(board.getTurn()).getTrains().toArray()){
+                arrayPrBidder.add(pr.getName());
+
+
+            }
+
+        }
+
+        for(Token pr : board.getPlayers().toArray()){
+
+            if(!(pr.getNameToken().equals(board.getPlayers().get(board.getTurn()).getNameToken()))){
+                arrayNamePlayers.add(pr.getNameToken());
+            }
+            
+
+        }
+
+        ObservableList<String> obPrBidder = FXCollections.observableArrayList(arrayPrBidder);
+        ObservableList<String> obNamePlayer = FXCollections.observableArrayList(arrayNamePlayers);
+        choisePrBidder.setItems(obPrBidder);
+        choicePurchasers.setItems(obNamePlayer);
+
+        alert("Nota", "Manego de propiedades.\n*. Si deseas eliminar un apropiedad agregada a la lista da 3 clicks sobre ella.\n*. Si deseas ver mas informacion sobre una propiedad agregada en una lista da 2 clicks en ella.");
+        
        
     }
 
@@ -495,11 +601,13 @@ public class ApoTwoPolyGUI extends AttributesGUI{
                 refresh();
 
             }else{
-                //no tiene para pagar
+                bankruptcy(communSquare.getTax(), null);
 
             }
 
         }
+
+        refresh();
         
 
     }
@@ -509,7 +617,7 @@ public class ApoTwoPolyGUI extends AttributesGUI{
         
         if(propertie.getOwner() != null && propertie.getOwner() != board.getPlayers().get(board.getTurn())){
 
-            int amout = propertie.getMortgage();
+            int amout = propertie.getRentalProperty();
 
             if(propertie.getHouses() != 0 && !(propertie.getHotel())){
                 amout = propertie.getRentalHousesAndHotel()[propertie.getHouses() - 1];
@@ -527,14 +635,36 @@ public class ApoTwoPolyGUI extends AttributesGUI{
                 refresh();
 
             }else{
-                //si no tiene dinero sificiente para pagar
+                bankruptcy(amout, propertie.getOwner());
 
             }
 
         }else if(propertie.getOwner() == board.getPlayers().get(board.getTurn())){ //compra casas y hoteles
+
+            int sum = 0;
             auxPropertie = propertie;
-            show(new FXMLLoader(getClass().getResource("screens/pop-up/properties/sellHouseOrHotel.fxml")), new Stage());
-            imageProperti.setImage(new Image(propertie.getProperty()));
+
+            for(Properties pr : board.getPlayers().get(board.getTurn()).getProperties().toArray()){
+
+                if(pr.getFamily() == propertie.getFamily()){
+                    sum++;
+
+                    if(sum == propertie.getAmountFamily()){
+                        break;
+
+                    }
+
+                }
+
+            }
+
+            if(sum == propertie.getAmountFamily()){
+                
+                show(new FXMLLoader(getClass().getResource("screens/pop-up/properties/sellHouseOrHotel.fxml")), new Stage());
+                imageProperti.setImage(new Image(propertie.getProperty()));
+
+            }
+            
 
         }else{
             show(new FXMLLoader(getClass().getResource("screens/pop-up/properties/viewProperti.fxml")), new Stage());
@@ -542,6 +672,8 @@ public class ApoTwoPolyGUI extends AttributesGUI{
             costPropertie.setText("$" + propertie.getCostProperty());
 
         }
+
+        refresh();
 
     }
 
@@ -551,13 +683,13 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
             int valor = 25;
 
-            if(board.getPlayers().get(board.getTurn()).getTrains().size() == 2){
+            if(propertie.getOwner().getTrains().size() == 2){
                 valor = 50;
 
-            }else if(board.getPlayers().get(board.getTurn()).getTrains().size() == 3){
+            }else if(propertie.getOwner().getTrains().size() == 3){
                 valor = 100;
 
-            }else if(board.getPlayers().get(board.getTurn()).getTrains().size() == 4){
+            }else if(propertie.getOwner().getTrains().size() == 4){
                 valor = 200;
 
             }
@@ -566,11 +698,11 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
                 board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() - valor);
                 propertie.getOwner().setMoney(propertie.getOwner().getMoney() + valor);
-                alert("Mala Suerte", "La propiedad tiene dueño, se te cobrara segun la cantidad de estaciones que este posea.\n" + "*. Cantidad de estaciones: " +  board.getPlayers().get(board.getTurn()).getTrains().size() + "\n El valor a pagar a " + propertie.getOwner().getNameToken() + " es $" + valor);
+                alert("Mala Suerte", "La propiedad tiene dueño, se te cobrara segun la cantidad de estaciones que este posea.\n" + "*. Cantidad de estaciones: " +  propertie.getOwner().getTrains().size() + "\n El valor a pagar a " + propertie.getOwner().getNameToken() + " es $" + valor);
                 refresh();
 
             }else{
-                //si no tiene dinero sificiente para pagar
+                bankruptcy(valor, propertie.getOwner());
 
             }
 
@@ -581,6 +713,7 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
         }
 
+        refresh();
 
     }
 
@@ -608,7 +741,7 @@ public class ApoTwoPolyGUI extends AttributesGUI{
                 refresh();
 
             }else{
-                //si no tiene dinero sificiente para pagar
+                bankruptcy(valor, propertie.getOwner());
 
             }
 
@@ -618,6 +751,8 @@ public class ApoTwoPolyGUI extends AttributesGUI{
             costPropertie.setText("$" + propertie.getCostProperty());
 
         }
+
+        refresh();
        
     }
 
@@ -907,8 +1042,441 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
         
     }
-   
 
+    @FXML
+    public void setPrPurcharser(ActionEvent event) {
+
+        ArrayList<String> namePr = new ArrayList<String>();
+
+        for(Token tk : board.getPlayers().toArray()){
+            if(tk.getNameToken().equals(choicePurchasers.getSelectionModel().getSelectedItem().toString())){
+
+                if(!(tk.getProperties().isEmpty())){
+                    for(Properties pr : tk.getProperties().toArray()){
+                        namePr.add(pr.getName());
+    
+                    }
+
+                }
+
+                if(!(tk.getPublicServices().isEmpty())){
+                    for(Properties pr : tk.getPublicServices().toArray()){
+                        namePr.add(pr.getName());
+    
+                    }
+
+                }
+
+                if(!(tk.getTrains().isEmpty())){
+                    for(Properties pr : tk.getTrains().toArray()){
+                        namePr.add(pr.getName());
+    
+                    }
+
+                }
+
+                break;
+
+            }
+
+        }
+
+        ObservableList<String> obPr = FXCollections.observableArrayList(namePr);
+        choisePrPurchaser.setItems(obPr);
+
+    }
+
+    @FXML
+    public void setTableViewPrPurchaser(ActionEvent event) {
+
+        for(Token tk : board.getPlayers().toArray()){
+
+            if(tk.getNameToken().equals(choicePurchasers.getSelectionModel().getSelectedItem().toString())){
+                String name = choisePrPurchaser.getSelectionModel().getSelectedItem().toString();
+                setTables(tk, tableViewPrPurchaser, namePrPurchaser, name, new TableColumn<Properties, Integer>());
+                break;
+
+            }
+
+        }
+
+    }
+
+    @FXML
+    public void SetTableViewPrBidder(ActionEvent event) {
+
+        String name = choisePrBidder.getSelectionModel().getSelectedItem().toString();
+        setTables(board.getPlayers().get(board.getTurn()), tableViewPrBidder, namePrBidder, name, new TableColumn<Properties, Integer>()); 
+        
+        
+    }
+
+    private void setTables(Token player, TableView<Properties> tableView, TableColumn<Properties, String> colum, String combobox, TableColumn<Properties, Integer> colum2){
+
+        boolean vali = true;
+
+        if(vali && !(player.getProperties().isEmpty())){
+
+            for(Properties pr : player.getProperties().toArray()){
+                if(pr.getName().equals(combobox)){
+                    tableView.getItems().add(pr);
+                    vali = false;
+                    
+                }
+
+            }
+
+        }
+        
+        if(vali && !(player.getPublicServices().isEmpty())){
+
+            for(Properties pr : player.getPublicServices().toArray()){
+                if(pr.getName().equals(combobox)){
+                    tableView.getItems().add(pr);
+                    vali = false;
+                  
+                }
+
+            }
+
+        }
+        
+        if(vali && !(player.getTrains().isEmpty())){
+
+            for(Properties pr : player.getTrains().toArray()){
+                if(pr.getName().equals(combobox)){
+                    tableView.getItems().add(pr);
+                    vali = false;
+
+                }
+
+            }
+
+        }
+
+        colum.setCellValueFactory(new PropertyValueFactory<Properties, String>("name"));
+        colum2.setCellValueFactory(new PropertyValueFactory<Properties, Integer>("mortgage"));
+
+        tableView.refresh();
+
+
+    }
+
+    @FXML
+    public void tapTableViewPrBidder (MouseEvent event) throws IOException{
+
+        opTableViews(event, tableViewPrBidder);
+
+        if (event.getClickCount() == 3){
+
+            choisePrBidder.valueProperty().set(null);
+            
+        }
+        
+
+    }
+
+    @FXML
+    public void tapTableViewPrPurchaser (MouseEvent event) throws IOException{
+
+        opTableViews(event, tableViewPrPurchaser);
+        
+        if (event.getClickCount() == 3){
+
+            choicePurchasers.valueProperty().set(null);
+            
+        }
+
+    }
+
+    @FXML
+    public void tapTableViewMortgage (MouseEvent event) throws IOException{
+
+        opTableViews(event, tableViewMortgage);
+        
+        if (event.getClickCount() == 3){
+
+            labelMortgageTotal.setText(String.valueOf(Integer.parseInt(labelMortgageTotal.getText()) - tableViewMortgage.getItems().get(tableViewMortgage.getSelectionModel().getSelectedIndex()).getMortgage()));
+            choicePurchasers.valueProperty().set(null);
+            
+        }
+
+    }
+
+    private void opTableViews(MouseEvent event, TableView<Properties> tableView) throws IOException{
+
+        int index = tableView.getSelectionModel().getSelectedIndex();
+
+        if (event.getClickCount() == 2){
+
+            show(new FXMLLoader(getClass().getResource("screens/pop-up/properties/viewProperti.fxml")), new Stage());
+            imageProperti.setImage(new Image(tableView.getItems().get(index).getProperty()));
+            costPropertie.setText("$" + tableView.getItems().get(index).getCostProperty());
+            buttomViewPropertie.setVisible(false);
+            
+        }
+
+        if (event.getClickCount() == 3){
+
+            localStage.close();
+
+            if (index <= -1){
+                return;
+            }
+
+            tableView.getItems().remove(index);
+            
+        }
+
+        tableView.refresh();
+
+    }
+   
+    @FXML
+    public void deal (ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmar Intercambio");
+        alert.setHeaderText(null);
+        alert.setContentText(choicePurchasers.getSelectionModel().getSelectedItem().toString() + " acceptas el intercambio?");
+        Optional<ButtonType> result =  alert.showAndWait();
+
+        if(result.get().getText().equals("Aceptar")){
+
+            threadsDeal = new DealThreads(board, Integer.parseInt(moneyBidder.getText()), Integer.parseInt(moneyPurchaser.getText()), tableViewPrBidder.getItems(), tableViewPrPurchaser.getItems(), choicePurchasers.getSelectionModel().getSelectedItem().toString(), this);
+            threadsDeal.start();
+
+        }
+
+        localStage.close();
+
+        
+    }
+
+    public void bankruptcy(int debt, Player player) throws IOException{
+
+        int stock = board.getPlayers().get(board.getTurn()).getMoney();
+
+        for(Properties pr : board.getPlayers().get(board.getTurn()).getProperties().toArray()){
+            stock += pr.getMortgage();
+
+        }
+
+        for(Properties pr : board.getPlayers().get(board.getTurn()).getPublicServices().toArray()){
+            stock += pr.getMortgage();
+
+        }
+
+        for(Properties pr : board.getPlayers().get(board.getTurn()).getTrains().toArray()){
+            stock += pr.getMortgage();
+
+        }
+
+        if(stock >= debt){
+            show(new FXMLLoader(getClass().getResource("screens/pop-up/mortgage/Mortgage.fxml")), new Stage());
+
+            ArrayList<String> array = new ArrayList<>();
+
+            if(!(board.getPlayers().get(board.getTurn()).getProperties().isEmpty())){
+
+                for(Properties pr : board.getPlayers().get(board.getTurn()).getProperties().toArray()){
+                    array.add(pr.getName());
+    
+    
+                }
+    
+            }
+    
+            if(!(board.getPlayers().get(board.getTurn()).getPublicServices().isEmpty())){
+    
+                for(Properties pr : board.getPlayers().get(board.getTurn()).getPublicServices().toArray()){
+                    array.add(pr.getName());
+    
+    
+                }
+    
+            }
+    
+            if(!(board.getPlayers().get(board.getTurn()).getTrains().isEmpty())){
+    
+                for(Properties pr : board.getPlayers().get(board.getTurn()).getTrains().toArray()){
+                    array.add(pr.getName());
+    
+    
+                }
+    
+            }
+
+            ObservableList<String> obPrBidder = FXCollections.observableArrayList(array);
+            choisMortgageProperties.setItems(obPrBidder);
+
+
+
+        }else{
+            alert("Mala Noticia", "No tienes dinero ni puede hipotecar, entras en BANCARROTA");
+            allNUll(board.getTurn());
+
+            if(player != null){
+                player.setMoney(player.getMoney() + board.getPlayers().get(board.getTurn()).getMoney());
+
+            }
+
+            paneOff();
+            board.getPlayers().get(board.getTurn()).setMoney(0);
+            board.getPlayers().remove(board.getTurn());
+
+            if(board.getPlayers().size() == 1){
+                //ganador
+
+            }
+
+        }
+
+        refresh();
+
+    }
+
+    @FXML
+    public void addMortgage (ActionEvent  event) {
+
+        setTables(board.getPlayers().get(board.getTurn()), tableViewMortgage, nameProperties, choisMortgageProperties.getSelectionModel().getSelectedItem().toString(), mortgagePropertie);
+
+        if(!(board.getPlayers().get(board.getTurn()).getProperties().isEmpty())){
+
+            for(Properties pr : board.getPlayers().get(board.getTurn()).getProperties().toArray()){
+                if(pr.getName().equals(choisMortgageProperties.getSelectionModel().getSelectedItem().toString())){
+                    labelMortgageTotal.setText(String.valueOf(Integer.parseInt(labelMortgageTotal.getText()) + pr.getMortgage()));
+    
+                }
+    
+            }
+
+        }
+
+        if(!(board.getPlayers().get(board.getTurn()).getTrains().isEmpty())){
+
+            for(Properties pr : board.getPlayers().get(board.getTurn()).getTrains().toArray()){
+                if(pr.getName().equals(choisMortgageProperties.getSelectionModel().getSelectedItem().toString())){
+                    labelMortgageTotal.setText(String.valueOf(Integer.parseInt(labelMortgageTotal.getText()) + pr.getMortgage()));
+    
+                }
+    
+            }
+
+        }
+
+        if(!(board.getPlayers().get(board.getTurn()).getPublicServices()).isEmpty()){
+
+            for(Properties pr : board.getPlayers().get(board.getTurn()).getPublicServices().toArray()){
+                if(pr.getName().equals(choisMortgageProperties.getSelectionModel().getSelectedItem().toString())){
+                    labelMortgageTotal.setText(String.valueOf(Integer.parseInt(labelMortgageTotal.getText()) + pr.getMortgage()));
+    
+                }
+    
+            }
+
+        }
+        
+
+    }
+
+    @FXML
+    public void mortgage (ActionEvent  event) {
+        int index = board.getTurn();
+
+        allNUll(index);
+
+        board.getPlayers().get(index).setMoney(board.getPlayers().get(index).getMoney() + Integer.parseInt(labelMortgageTotal.getText()));
+
+        localStage.close();
+        refresh();
+
+    }
+
+    private void allNUll(int index){
+
+        for(Properties pr :  tableViewMortgage.getItems()){
+
+            if(pr.getId() == 1){
+                for(int i = board.getPlayers().get(index).getProperties().size() - 1; i >= 0; i--){
+
+                    if(board.getPlayers().get(index).getProperties().get(i).getName().equals(pr.getName())){
+                        board.getPlayers().get(index).getProperties().remove(i);
+                        pr.setOwner(null);
+                        break;
+
+                    }
+
+                }
+
+            }else if(pr.getId() == 2){
+                for(int i = board.getPlayers().get(index).getTrains().size() - 1; i >= 0; i--){
+
+                    if(board.getPlayers().get(index).getTrains().get(i).getName().equals(pr.getName())){
+                        board.getPlayers().get(index).getTrains().remove(i);
+                        pr.setOwner(null);
+                        break;
+
+                    }
+
+                }
+
+            }else{
+                for(int i = board.getPlayers().get(index).getPublicServices().size() - 1; i >= 0; i--){
+
+                    if(board.getPlayers().get(index).getPublicServices().get(i).getName().equals(pr.getName())){
+                        board.getPlayers().get(index).getPublicServices().remove(i);
+                        pr.setOwner(null);
+                        break;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    private void paneOff(){
+
+        switch(board.getPlayers().get(board.getTurn()).getNameToken()){
+            case "BOAT":
+                paneBoat.setOpacity(0);
+                break;
+
+            case "HAT":
+                paneHat.setOpacity(0);
+                break;
+
+            case "HOLE":
+                paneHole.setOpacity(0);
+                break;
+
+            case "CAR":
+                paneCar.setOpacity(0);
+                break;
+
+            case "CAT":
+                paneCat.setOpacity(0);
+                break;
+
+            case "SHOES":
+                paneShoes.setOpacity(0);
+                break;
+
+            case "BOX":
+                paneBox.setOpacity(0);
+                break;
+
+            case "DOG":
+                paneDog.setOpacity(0);
+                break;
+
+        }
+
+    }
     
 	
 	

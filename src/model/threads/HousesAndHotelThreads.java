@@ -322,18 +322,8 @@ public class HousesAndHotelThreads extends Thread{
             }
 
 
-
-            
-
-
-
-
-
         }
         
-        
-
-
     }
 
     private ArrayList<ArrayList<ImageView>> getArray(){

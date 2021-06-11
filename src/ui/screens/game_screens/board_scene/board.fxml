@@ -291,12 +291,12 @@
             </Pane>
          </children>
       </GridPane>
-      <Button layoutX="1095.0" layoutY="101.0" mnemonicParsing="false" onAction="#goAllProperties" prefHeight="103.0" prefWidth="246.0" text="Propiedades Disponibles">
+      <Button layoutX="1095.0" layoutY="105.0" mnemonicParsing="false" onAction="#goAllProperties" prefHeight="103.0" prefWidth="246.0" text="Propiedades Disponibles">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="buttonRollDice" layoutX="1093.0" layoutY="338.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="89.0" prefWidth="253.0" text="Tirar Dado">
+      <Button layoutX="1093.0" layoutY="348.0" mnemonicParsing="false" onAction="#goCharts" prefHeight="89.0" prefWidth="253.0" text="Patrimonios">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -306,7 +306,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextArea fx:id="registerLabel" editable="false" layoutX="1087.0" layoutY="467.0" prefHeight="504.0" prefWidth="267.0">
+      <TextArea fx:id="registerLabel" editable="false" layoutX="1086.0" layoutY="590.0" prefHeight="381.0" prefWidth="267.0" promptText="Registro de Dados">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></TextArea>
@@ -980,5 +980,10 @@
             </ImageView>
          </children>
       </Pane>
+      <Button fx:id="buttonRollDice" layoutX="1093.0" layoutY="465.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="89.0" prefWidth="253.0" text="Tirar Dado">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>

@@ -1,5 +1,9 @@
 package objects;
 
+import java.io.IOException;
+
+import javafx.application.Platform;
+import ui.ApoTwoPolyGUI;
 
 public class FortuneCards extends WildCards {
     
@@ -31,17 +35,15 @@ public class FortuneCards extends WildCards {
     }
 
     @Override
-    public Board action(Board board){
+    public Board action(Board board, ApoTwoPolyGUI gui) throws IOException{
 
         int aux = 0;
        
-
-
         switch(idAction){
             case 1:
 
                 board.getPlayers().get(board.getTurn()).setPosition(1);
-                board = setMoney(board, 200);
+                board = setMoney(board, 200, gui);
                 board.getPlayers().get(board.getTurn()).setJail(true);
                 break;
             
@@ -51,11 +53,11 @@ public class FortuneCards extends WildCards {
                 break;
             
             case 3:
-                board = setMoney(board, 100);
+                board = setMoney(board, 100, gui);
                 break;
             
             case 4:
-                board = setMoney(board, -50);
+                board = setMoney(board, -50, gui);
                 //ver si puede pagar
                 break;
             
@@ -64,12 +66,12 @@ public class FortuneCards extends WildCards {
                 break;
             
             case 6:
-                board = setMoney(board, 150);
+                board = setMoney(board, 150, gui);
                 break;
 
             case 7:
                 board.getPlayers().get(board.getTurn()).setPosition(0);
-                board = setMoney(board, 200);
+                board = setMoney(board, 200, gui);
                 board.getPlayers().get(board.getTurn()).setJail(true);
                 break;
 
@@ -96,7 +98,7 @@ public class FortuneCards extends WildCards {
                 break;
 
             case 9:
-                board = setMoney(board, -15);
+                board = setMoney(board, -15, gui);
                 //ver si puede pagar
                 break;
 
@@ -118,7 +120,7 @@ public class FortuneCards extends WildCards {
             
                 }
         
-                board = setMoney(board,  aux);
+                board = setMoney(board,  aux, gui);
                 break;
 
             case 12:
@@ -127,7 +129,7 @@ public class FortuneCards extends WildCards {
                 break;
 
             case 13:
-                board = setMoney(board, 50);
+                board = setMoney(board, 50, gui);
                 break;
 
             case 14:
@@ -138,7 +140,7 @@ public class FortuneCards extends WildCards {
 
                 }
 
-                board = setMoney(board, -25*(aux));
+                board = setMoney(board, -25*(aux), gui);
                 //ver si puede pagar
             break;
 
@@ -150,10 +152,34 @@ public class FortuneCards extends WildCards {
     }
 
     @Override
-    public Board setMoney(Board board, int aux){
-        board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() + aux);
+    public Board setMoney(Board board, int aux, ApoTwoPolyGUI gui) throws IOException{
 
-        return board;
+        if(aux < 0 && board.getPlayers().get(board.getTurn()).getMoney() < (aux)*(-1)){
+
+            Platform.runLater(new Thread(){
+                @Override
+                public void run() {
+
+                    try {
+                        gui.bankruptcy((aux)*(-1), null);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+
+                    }
+                }
+    
+            });
+
+            return gui.getBoard();
+
+        }else{
+            board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() + aux);
+            return board;
+            
+        }
+
+       
     }
     
 }

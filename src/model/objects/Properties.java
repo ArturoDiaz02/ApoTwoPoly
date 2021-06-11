@@ -16,9 +16,11 @@ public class Properties extends Square{
     private int family;
     private int amountFamily;
     private int hierarchy;
+    private String name;
+    private int id;
 
 
-    public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int numSquare, int typeSquare, String imageView, int family, int amountFamily, int hierarchy) {
+    public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int numSquare, int typeSquare, String imageView, int family, int amountFamily, int hierarchy, String name) {
         super(numSquare, typeSquare);
         this.property = property;
         this.costProperty = costProperty;
@@ -33,29 +35,34 @@ public class Properties extends Square{
         this.family = family;
         this.amountFamily = amountFamily;
         this.hierarchy = hierarchy;
+        this.name = name;
+        this.id = 1;
     }
 
-    public Properties(String property, int costProperty, int rentalProperty, int numSquare, int typeSquare, int mortgage, String imageView){ 
+    public Properties(String property, int costProperty, int rentalProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name){ 
         super(numSquare, typeSquare);
         this.property = property;
         this.costProperty = costProperty;
         this.rentalProperty = rentalProperty;
         this.mortgage = mortgage;
         this.imageView = imageView;
+        this.name = name;
+        this.id = 2;
 
     }
 
-    public Properties(String property, int costProperty, int numSquare, int typeSquare, int mortgage, String imageView){ 
+    public Properties(String property, int costProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name){ 
         super(numSquare, typeSquare);
         this.property = property;
         this.costProperty = costProperty;
         this.mortgage = mortgage;
         this.imageView = imageView;
+        this.name = name;
+        this.id = 3;
 
     }
 
     public Properties(){}
-
 
 
     public String getProperty() {
@@ -165,8 +172,22 @@ public class Properties extends Square{
     public void setHierarchy(int hierarchy) {
         this.hierarchy = hierarchy;
     }
-   
 
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
    
     public Properties propeties(Board board, int index){
         return board.getPropertiesSquare().get(index);
