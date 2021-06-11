@@ -104,11 +104,18 @@ public class FortuneCards extends WildCards {
 
             case 10:
 
-                board.getPlayers().get(board.getTurn()).setPosition(10);
-                board.getPlayers().get(board.getTurn()).setPenalty(3);
-                board.getPlayers().get(board.getTurn()).setJail(true);
-                board.getCommunSquare().get(2).getJail().add(board.getPlayers().get(board.getTurn()));
-                break;
+                if(board.getPlayers().get(board.getTurn()).getEspecialCards()){
+                    board.getPlayers().get(board.getTurn()).setEspecialCards(false);
+                
+                }else{ 
+                    board.getPlayers().get(board.getTurn()).setPosition(10);
+                    board.getPlayers().get(board.getTurn()).setPenalty(3);
+                    board.getPlayers().get(board.getTurn()).setJail(true);
+                    board.getCommunSquare().get(2).getJail().add(board.getPlayers().get(board.getTurn()));
+
+                }
+
+            break;
 
             case 11:
                 

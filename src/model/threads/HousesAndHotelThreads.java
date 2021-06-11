@@ -286,38 +286,12 @@ public class HousesAndHotelThreads extends Thread{
 
         }else{
 
-
-            if(propertie.getHierarchy() == 0 && propertie.getFamily() == 2){
-                arrayFamily.get(propertie.getFamily() - 1).get(8).setVisible(true);
-
-            }else if(propertie.getHierarchy() == 0 && propertie.getFamily() == 3){
-                arrayFamily.get(propertie.getFamily() - 1).get(12).setVisible(true);
-
-            }
-
-            if(propertie.getHierarchy() == 4 && propertie.getFamily() == 2){
-                arrayFamily.get(propertie.getFamily() - 1).get(9).setVisible(true);
-
-            }else if(propertie.getHierarchy() == 4 && propertie.getFamily() == 3){
-                arrayFamily.get(propertie.getFamily() - 1).get(13).setVisible(true);
-
-            }
-
-            if(propertie.getHierarchy() == 8 && propertie.getFamily() == 2){
-                arrayFamily.get(propertie.getFamily() - 1).get(10).setVisible(true);
-
-            }else if(propertie.getHierarchy() == 8 && propertie.getFamily() == 3){
-                arrayFamily.get(propertie.getFamily() - 1).get(14).setVisible(true);
-
-            }
+            arrayFamily.get(propertie.getFamily() - 1).get(propertie.getIdHotel()).setVisible(true);
 
             propertie.setHotel(true);
 
             for(int i = propertie.getHierarchy(); i < propertie.getHierarchy() + 4; i++){
-                if(arrayFamily.get(propertie.getFamily() - 1).get(i).isVisible()){
-                    arrayFamily.get(propertie.getFamily() - 1).get(i).setVisible(false);
-
-                }
+                arrayFamily.get(propertie.getFamily() - 1).get(i).setVisible(false);
 
             }
 

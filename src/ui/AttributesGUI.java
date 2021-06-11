@@ -17,17 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import objects.Board;
 import objects.Properties;
-import threads.ChartThreads;
-import threads.CommunThreads;
-import threads.DealThreads;
-import threads.ImageOrderingThreads;
-import threads.PanesOrderingThreads;
-import threads.PlayerProperties;
-import threads.PropertiesThreads;
-import threads.PublicServicesThreads;
-import threads.TrainThreads;
-import threads.WildCardsThreads;
-
+import threads.*;
 
 public abstract class AttributesGUI {
 
@@ -259,7 +249,6 @@ public abstract class AttributesGUI {
     protected PlayerProperties threadPlayerProperties;
     protected DealThreads threadsDeal;
     protected boolean valiAction = true;
-    protected ChartThreads threadsChart;
     
     
    

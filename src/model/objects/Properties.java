@@ -18,9 +18,10 @@ public class Properties extends Square{
     private int hierarchy;
     private String name;
     private int id;
+    private int idHotel;
 
 
-    public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int numSquare, int typeSquare, String imageView, int family, int amountFamily, int hierarchy, String name) {
+    public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int numSquare, int typeSquare, String imageView, int family, int amountFamily, int hierarchy, String name, int idHotel) {
         super(numSquare, typeSquare);
         this.property = property;
         this.costProperty = costProperty;
@@ -37,6 +38,7 @@ public class Properties extends Square{
         this.hierarchy = hierarchy;
         this.name = name;
         this.id = 1;
+        this.idHotel = idHotel;
     }
 
     public Properties(String property, int costProperty, int rentalProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name){ 
@@ -64,7 +66,7 @@ public class Properties extends Square{
 
     public Properties(){}
 
-
+    
     public String getProperty() {
         return this.property;
     }
@@ -188,6 +190,16 @@ public class Properties extends Square{
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getIdHotel() {
+        return this.idHotel;
+    }
+
+    public void setIdHotel(int idHotel) {
+        this.idHotel = idHotel;
+    }
+
+   
    
     public Properties propeties(Board board, int index){
         return board.getPropertiesSquare().get(index);

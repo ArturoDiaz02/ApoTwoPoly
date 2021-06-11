@@ -104,10 +104,17 @@ public class CommunityServiceCards extends WildCards{
                 break;
 
             case 11:
-                board.getPlayers().get(board.getTurn()).setPosition(10);
-                board.getPlayers().get(board.getTurn()).setPenalty(3);
-                board.getPlayers().get(board.getTurn()).setJail(true);
-                board.getCommunSquare().get(2).getJail().add(board.getPlayers().get(board.getTurn()));
+                if(board.getPlayers().get(board.getTurn()).getEspecialCards()){
+                    board.getPlayers().get(board.getTurn()).setEspecialCards(false);
+                    
+                }else{ 
+                    board.getPlayers().get(board.getTurn()).setPosition(10);
+                    board.getPlayers().get(board.getTurn()).setPenalty(3);
+                    board.getPlayers().get(board.getTurn()).setJail(true);
+                    board.getCommunSquare().get(2).getJail().add(board.getPlayers().get(board.getTurn()));
+
+                }
+               
                 break;
 
             case 12:

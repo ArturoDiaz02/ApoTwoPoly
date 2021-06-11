@@ -441,11 +441,11 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
     }
 
-    
 
     //**************************************************************************
     // Dice
 
+    
     private void initDice() throws IOException, InterruptedException {
 
         int diceOne = 0;
@@ -587,11 +587,18 @@ public class ApoTwoPolyGUI extends AttributesGUI{
     public void actionCommunSquare(CommunSquare communSquare) throws IOException{
 
         if(communSquare.getAction() == 2){
-            alert("Mala Suerte", "Dirigete a la carcel para cumplir tu condena");
-            board.getPlayers().get(board.getTurn()).setPosition(10);
-            board.getPlayers().get(board.getTurn()).setPenalty(3);
-            board.getPlayers().get(board.getTurn()).setJail(true);
-            board.getCommunSquare().get(2).getJail().add(board.getPlayers().get(board.getTurn()));
+            if(board.getPlayers().get(board.getTurn()).getEspecialCards()){
+                board.getPlayers().get(board.getTurn()).setEspecialCards(false);
+                
+            }else{ 
+                alert("Mala Suerte", "Dirigete a la carcel para cumplir tu condena");
+                board.getPlayers().get(board.getTurn()).setPosition(10);
+                board.getPlayers().get(board.getTurn()).setPenalty(3);
+                board.getPlayers().get(board.getTurn()).setJail(true);
+                board.getCommunSquare().get(2).getJail().add(board.getPlayers().get(board.getTurn()));
+
+            }
+            
             
         }else if(communSquare.getAction() == 5){
             alert("Mala Suerte", "Pagas un impuesto de " + communSquare.getTax());
