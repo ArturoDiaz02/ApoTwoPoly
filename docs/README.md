@@ -18,5 +18,6 @@ ___
 ## Resources (Documentation and other links)
 
    * Project description and Funcional requirements ([Click here](https://github.com/ArturoDiaz02/ApoTwoPoly/blob/master/docs/Diaz.pdf))
+   * Presentation video ([Click here](https://youtu.be/rFfJf1AA35c))
 
 
