@@ -81,7 +81,7 @@ public class CommunityServiceCards extends WildCards{
 
             case 8:
                 board.getPlayers().get(board.getTurn()).setPosition(0);
-                board = setMoney(board, 200);
+                board = setMoney(board, 200, gui);
                 board.getPlayers().get(board.getTurn()).setJail(true);
                 break;
 

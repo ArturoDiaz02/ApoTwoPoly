@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -26,14 +26,6 @@
       </Label>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="76.0" prefHeight="30.0" prefWidth="57.0" text="Oferta" textAlignment="CENTER" />
       <Label layoutX="506.0" layoutY="82.0" text="Para:" />
-      <TextArea fx:id="moneyBidder" layoutX="160.0" layoutY="256.0" prefHeight="38.0" prefWidth="101.0" promptText="Dinero" text="0">
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor></TextArea>
-      <TextArea fx:id="moneyPurchaser" layoutX="469.0" layoutY="256.0" prefHeight="21.0" prefWidth="101.0" promptText="Dinero" text="0">
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor></TextArea>
       <Button layoutX="325.0" layoutY="282.0" mnemonicParsing="false" onAction="#deal" text="Hacer Oferta" />
       <Label layoutX="321.0" layoutY="169.0" text="&lt;------------&gt;" textAlignment="CENTER" textFill="#bd0000">
          <font>
@@ -71,5 +63,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ComboBox>
+      <TextField fx:id="moneyBidder" alignment="CENTER" layoutX="139.0" layoutY="257.0" prefHeight="25.0" prefWidth="143.0" text="0" />
+      <TextField fx:id="moneyPurchaser" alignment="CENTER" layoutX="447.0" layoutY="257.0" prefHeight="25.0" prefWidth="143.0" text="0" />
    </children>
 </Pane>

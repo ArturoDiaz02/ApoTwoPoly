@@ -17,6 +17,11 @@ public class Token extends Player implements Move{
         
     }
 
+    public Token(int money,  String nameToken, int numProperties, String namePlayer) {
+        super(money, nameToken, numProperties, namePlayer);
+    
+    }
+
     public Token(ImageView token){
         super();
         this.token = token;

@@ -16,6 +16,8 @@ public abstract class Player implements Serializable{
     private int penalty;
     private boolean par;
     private boolean jail;
+    private int numProperties;
+    private String namePlayer;
 
     protected Player(int money,  String nameToken) {
         this.properties = new MeLinkedLists<>();
@@ -28,6 +30,15 @@ public abstract class Player implements Serializable{
         this.penalty = 0;
         this.par = false;
         this.jail = false;
+    }
+
+    protected Player(int money,  String nameToken, int numProperties, String namePlayer) {
+
+        this.money = money;
+        this.nameToken = nameToken;
+        this.namePlayer = namePlayer;
+        this.numProperties = numProperties;
+        
     }
     
     protected Player() {}
@@ -124,6 +135,23 @@ public abstract class Player implements Serializable{
     public void setJail(boolean jail) {
         this.jail = jail;
     }
+
+    public int getNumProperties() {
+        return this.numProperties;
+    }
+
+    public void setNumProperties(int numProperties) {
+        this.numProperties = numProperties;
+    }
+
+    public String getNamePlayer() {
+        return this.namePlayer;
+    }
+
+    public void setNamePlayer(String namePlayer) {
+        this.namePlayer = namePlayer;
+    }
+
 
     
 

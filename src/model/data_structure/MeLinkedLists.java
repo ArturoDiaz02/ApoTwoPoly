@@ -192,7 +192,9 @@ public class MeLinkedLists<E> implements Serializable, bSearch {
             
         }else{
             getNode(index).getPrevious().setNext(getNode(index).getNext());
+
             getNode(index).getNext().setPrevious(getNode(index).getPrevious());
+ 
         }
 
         size -= 1;

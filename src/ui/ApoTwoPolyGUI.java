@@ -1,8 +1,19 @@
 package ui;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Optional;
+
+import excepcion.ComboBoxExcepcion;
+import excepcion.ListExcepcion;
+import excepcion.NameWinnerExcepcion;
+import excepcion.PlayerExcepcion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -50,7 +61,6 @@ public class ApoTwoPolyGUI extends AttributesGUI{
     //**************************************************************************
     // Init Screens
     
-
     @FXML
     public void goTokens(ActionEvent event) throws IOException {
         mainLeave(event);
@@ -120,11 +130,13 @@ public class ApoTwoPolyGUI extends AttributesGUI{
     }
 
     @FXML
-    public void goBoard(ActionEvent event) throws IOException{
+    public void goBoard(ActionEvent event) throws PlayerExcepcion, IOException{
 
-        if(!(checkBoat.isSelected()) && !(checkBox.isSelected()) && !(checkCar.isSelected()) && !(checkCat.isSelected()) && !(checkDog.isSelected()) && !(checkHat.isSelected()) && !(checkHole.isSelected()) && !(checkShoes.isSelected())){
+        playerExcepcion = new PlayerExcepcion();
 
-        }else{
+        try {
+
+            playerExcepcion.validateAmountPlayer(checkBoat, checkBox, checkCar, checkCat, checkDog, checkHat, checkHole, checkShoes);
 
             mainLeave(event);
             show(new FXMLLoader(getClass().getResource("screens/game_screens/board_scene/board.fxml")), new Stage());
@@ -191,8 +203,14 @@ public class ApoTwoPolyGUI extends AttributesGUI{
             alert("INFORMACION", "*. Con las teclas W,A,S,D el jugador en turno puede mover su token sobre el tablero.\n*. Tecla ENTER para ejecutar la accion de una casilla.\n*. Tecla P para pasar de turno");
 
 
+            
+        } catch (PlayerExcepcion e) {
+            System.out.println(e.getMessage());
+            alert("ERROR", "La cantidad de jugadores es menor a 2");
+
+            
         }
-        
+
     }
 
     @FXML
@@ -441,11 +459,9 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
     }
 
-
     //**************************************************************************
     // Dice
 
-    
     private void initDice() throws IOException, InterruptedException {
 
         int diceOne = 0;
@@ -854,7 +870,6 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
     }
 
-
     @FXML
     public void buyProperti(ActionEvent event) {
         threadProperties =  new PropertiesThreads(board, this, false);
@@ -867,7 +882,6 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
     }
 
-    
     @FXML
     public void payJail(ActionEvent event) {
 
@@ -1094,28 +1108,50 @@ public class ApoTwoPolyGUI extends AttributesGUI{
     }
 
     @FXML
-    public void setTableViewPrPurchaser(ActionEvent event) {
+    public void setTableViewPrPurchaser(ActionEvent event) throws ComboBoxExcepcion {
 
-        for(Token tk : board.getPlayers().toArray()){
+        comboBoxExcepcion = new ComboBoxExcepcion();
 
-            if(tk.getNameToken().equals(choicePurchasers.getSelectionModel().getSelectedItem().toString())){
-                String name = choisePrPurchaser.getSelectionModel().getSelectedItem().toString();
-                setTables(tk, tableViewPrPurchaser, namePrPurchaser, name, new TableColumn<Properties, Integer>());
-                break;
+        try {
 
+            comboBoxExcepcion.validateComboBox(choisePrBidder);
+
+            for(Token tk : board.getPlayers().toArray()){
+
+                if(tk.getNameToken().equals(choicePurchasers.getSelectionModel().getSelectedItem().toString())){
+                    String name = choisePrPurchaser.getSelectionModel().getSelectedItem().toString();
+                    setTables(tk, tableViewPrPurchaser, namePrPurchaser, name, new TableColumn<Properties, Integer>());
+                    break;
+    
+                }
+    
             }
 
+        } catch (ComboBoxExcepcion e) {
+            System.out.println(e.getMessage());
+          
         }
+
+       
 
     }
 
     @FXML
-    public void SetTableViewPrBidder(ActionEvent event) {
+    public void SetTableViewPrBidder(ActionEvent event) throws ComboBoxExcepcion{
 
-        String name = choisePrBidder.getSelectionModel().getSelectedItem().toString();
-        setTables(board.getPlayers().get(board.getTurn()), tableViewPrBidder, namePrBidder, name, new TableColumn<Properties, Integer>()); 
-        
-        
+        comboBoxExcepcion = new ComboBoxExcepcion();
+
+        try {
+
+            comboBoxExcepcion.validateComboBox(choisePrBidder);
+            String name = choisePrBidder.getSelectionModel().getSelectedItem().toString();
+            setTables(board.getPlayers().get(board.getTurn()), tableViewPrBidder, namePrBidder, name, new TableColumn<Properties, Integer>()); 
+
+        } catch (ComboBoxExcepcion e) {
+            System.out.println(e.getMessage());
+          
+        }
+
     }
 
     private void setTables(Token player, TableView<Properties> tableView, TableColumn<Properties, String> colum, String combobox, TableColumn<Properties, Integer> colum2){
@@ -1242,20 +1278,33 @@ public class ApoTwoPolyGUI extends AttributesGUI{
     @FXML
     public void deal (ActionEvent event) {
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmar Intercambio");
-        alert.setHeaderText(null);
-        alert.setContentText(choicePurchasers.getSelectionModel().getSelectedItem().toString() + " acceptas el intercambio?");
-        Optional<ButtonType> result =  alert.showAndWait();
+        comboBoxExcepcion = new ComboBoxExcepcion();
 
-        if(result.get().getText().equals("Aceptar")){
+        try {
 
-            threadsDeal = new DealThreads(board, Integer.parseInt(moneyBidder.getText()), Integer.parseInt(moneyPurchaser.getText()), tableViewPrBidder.getItems(), tableViewPrPurchaser.getItems(), choicePurchasers.getSelectionModel().getSelectedItem().toString(), this);
-            threadsDeal.start();
+            comboBoxExcepcion.validateComboBox(choicePurchasers);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmar Intercambio");
+            alert.setHeaderText(null);
+            alert.setContentText(choicePurchasers.getSelectionModel().getSelectedItem().toString() + " acceptas el intercambio?");
+            Optional<ButtonType> result =  alert.showAndWait();
 
+            if(result.get().getText().equals("Aceptar")){
+
+                threadsDeal = new DealThreads(board, Integer.parseInt(moneyBidder.getText()), Integer.parseInt(moneyPurchaser.getText()), tableViewPrBidder.getItems(), tableViewPrPurchaser.getItems(), choicePurchasers.getSelectionModel().getSelectedItem().toString(), this);
+                threadsDeal.start();
+
+            }
+
+            localStage.close(); 
+
+        } catch (ComboBoxExcepcion e) {
+            System.out.println(e.getMessage());
+            alert("ERROR", "El jugador que recibe la oferta no fue seleccionado");
+          
         }
 
-        localStage.close();
+       
 
         
     }
@@ -1320,8 +1369,7 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
 
         }else{
-            alert("Mala Noticia", "No tienes dinero ni puede hipotecar, entras en BANCARROTA");
-            allNUll(board.getTurn());
+            alert("Mala Noticia", "No tienes dinero ni puede hipotecar, entras en BANCARROTA");        
 
             if(player != null){
                 player.setMoney(player.getMoney() + board.getPlayers().get(board.getTurn()).getMoney());
@@ -1330,10 +1378,16 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
             paneOff();
             board.getPlayers().get(board.getTurn()).setMoney(0);
-            board.getPlayers().remove(board.getTurn());
+            ArrayList<Token> aux = board.getPlayers().toArray();
+            aux.remove(board.getTurn());
+            board.getPlayers().arrayToMeList(aux);
+            board.getPlayers().setSize(1);
 
             if(board.getPlayers().size() == 1){
-                //ganador
+
+                show(new FXMLLoader(getClass().getResource("screens/pop-up/winner/Winner.fxml")), new Stage());
+
+                alert("Ganador", "El jugador " + board.getPlayers().get(0).getNameToken() + " gano la partida");
 
             }
 
@@ -1485,6 +1539,150 @@ public class ApoTwoPolyGUI extends AttributesGUI{
 
     }
     
-	
+    @FXML
+	public void readLeaderBoard() throws NumberFormatException, IOException, ListExcepcion{
+
+        listExcepcion = new ListExcepcion();
+
+        try {
+
+            BufferedReader br = new BufferedReader(new FileReader("data\\Classification_Board.txt"));
+            String vali = br.readLine();
+            listExcepcion.validateList(vali);
+
+            show(new FXMLLoader(getClass().getResource("screens/pop-up/leaderBoard/LeaderBoard.fxml")), new Stage());
+            ArrayList<Token> arrayToken = new ArrayList<>();
+            int index = Integer.parseInt(vali);
+            
+
+            for(int i = 0; i < index; i++){
+
+                String[] format = spliter(br.readLine(), new String[5], 0);
+
+                String namePlayer = format[0];
+		        String nameToken = format[1];
+		        int money = Integer.parseInt(format[2]);
+		        int numProperties = Integer.parseInt(format[3]);
+
+
+                arrayToken.add(new Token(money, nameToken, numProperties, namePlayer));
+
+            }
+
+            br.close();
+
+            tableViewLeaderBoard.getItems().addAll(arrayToken);
+
+            leaderBoardName.setCellValueFactory(new PropertyValueFactory<Token, String>("namePlayer"));
+            leaderBoardToken.setCellValueFactory(new PropertyValueFactory<Token, String>("nameToken"));
+            leaderBoardMoney.setCellValueFactory(new PropertyValueFactory<Token, Integer>("money"));
+            leaderBoardProperties.setCellValueFactory(new PropertyValueFactory<Token, Integer>("numProperties"));
+
+            tableViewLeaderBoard.refresh();
+            
+        } catch (ListExcepcion e) {
+            System.out.println(e.getMessage());
+            alert("Nota", e.getMessage());
+
+        }
+
+        
+        
+    }
+
+    private String[] spliter(String next, String[] format, int contador) {
+
+    	if(contador < 4) {
+    		format[contador] =(next.split(" ")[contador]);
+    		spliter(next, format, contador + 1);
+    	}
+    	
+		return format;
+    
+    }
+
+    @FXML
+	public void registerWinner() throws NumberFormatException, IOException, NameWinnerExcepcion, ClassNotFoundException{
+
+        BufferedReader br = new BufferedReader(new FileReader("data\\Classification_Board.txt"));
+        ObjectInputStream ois= new ObjectInputStream(new FileInputStream("data\\Data.txt"));
+        nameWinnerExcepcion  = new NameWinnerExcepcion();
+        listExcepcion = new ListExcepcion();
+
+        try {
+
+            String vali = br.readLine();
+
+            nameWinnerExcepcion.validateNameWinner(nameRegister.getText());
+            listExcepcion.validateList(vali);
+
+            ArrayList<Token> arrayToken = new ArrayList<>();
+        
+
+            int index = Integer.parseInt(vali);
+
+            for(int i = 0; i < index; i++){
+
+                String[] format = spliter(br.readLine(), new String[5], 0);
+
+                String namePlayer = format[0];
+		        String nameToken = format[1];
+		        int money = Integer.parseInt(format[2]);
+		        int numProperties = Integer.parseInt(format[3]);
+
+
+                arrayToken.add(new Token(money, nameToken, numProperties, namePlayer));
+
+            }
+
+            br.close();
+
+            int numProperties = board.getPlayers().get(0).getProperties().size() + board.getPlayers().get(0).getTrains().size() + board.getPlayers().get(0).getPublicServices().size();
+
+            arrayToken.add(new Token (board.getPlayers().get(0).getMoney(), board.getPlayers().get(0).getNameToken(), numProperties, nameRegister.getText()));
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter("data\\Classification_Board.txt"));
+
+            bw.write(arrayToken.size() + "\n");
+
+            for(Token tk : arrayToken){
+                bw.write(tk.getNamePlayer() + " " + tk.getNameToken() + " " + tk.getMoney() + " " + tk.getNumProperties() + "\n");
+
+            }
+
+            bw.close();
+
+            localStage.close();
+            auxlocalStage.close();
+            show(new FXMLLoader(getClass().getResource("screens/main_screen/main.fxml")), new Stage());
+            setBoard((Board) ois.readObject());
+            ois.close();
+            
+            
+        } catch (NameWinnerExcepcion e) {
+            System.out.println(e.getMessage());
+            alert("ERROR", e.getMessage());
+            
+        } catch(ListExcepcion e){
+            int numProperties = board.getPlayers().get(0).getProperties().size() + board.getPlayers().get(0).getTrains().size() + board.getPlayers().get(0).getPublicServices().size();
+
+            Token tk = board.getPlayers().get(0);
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter("data\\Classification_Board.txt"));
+
+            bw.write(1 + "\n");
+            bw.write(nameRegister.getText() + " " + tk.getNameToken() + " " + tk.getMoney() + " " + numProperties + "\n");
+            bw.close();
+
+            localStage.close();
+            auxlocalStage.close();
+            show(new FXMLLoader(getClass().getResource("screens/main_screen/main.fxml")), new Stage());
+            setBoard((Board) ois.readObject());
+            ois.close();
+
+        }
+
+    
+    }
 	
 }

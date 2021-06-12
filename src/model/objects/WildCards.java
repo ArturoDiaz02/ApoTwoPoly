@@ -1,6 +1,9 @@
 package objects;
 
+import java.io.IOException;
+
 import interface_class.Cards;
+import ui.ApoTwoPolyGUI;
 
 public class WildCards extends Square implements Cards {
 
@@ -34,12 +37,12 @@ public class WildCards extends Square implements Cards {
     }
 
     @Override
-    public Board action(Board board) {
+    public Board action(Board board, ApoTwoPolyGUI gui) throws IOException {
         return null;
     }
 
     @Override
-    public Board setMoney(Board board, int aux) {
+    public Board setMoney(Board board, int aux, ApoTwoPolyGUI gui) throws IOException {
         return null;
     }
     

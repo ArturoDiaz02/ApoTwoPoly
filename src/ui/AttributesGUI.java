@@ -1,5 +1,9 @@
 package ui;
 
+import excepcion.ComboBoxExcepcion;
+import excepcion.ListExcepcion;
+import excepcion.NameWinnerExcepcion;
+import excepcion.PlayerExcepcion;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -11,12 +15,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import objects.Board;
 import objects.Properties;
+import objects.Token;
 import threads.*;
 
 public abstract class AttributesGUI {
@@ -215,9 +221,10 @@ public abstract class AttributesGUI {
     @FXML protected GridPane gridPaneGame;
     @FXML protected ComboBox<String> choicePurchasers;
     @FXML protected ComboBox<String> choisePrBidder;
-    @FXML protected TextArea moneyBidder;
+    @FXML protected TextField moneyBidder;
     @FXML protected ComboBox<String> choisePrPurchaser;
-    @FXML protected TextArea moneyPurchaser;
+    @FXML protected TextField moneyPurchaser;
+    @FXML protected TextField nameRegister;
     @FXML protected TableView<Properties> tableViewPrBidder;
     @FXML protected TableColumn<Properties, String> namePrBidder;
     @FXML protected TableView<Properties> tableViewPrPurchaser;
@@ -230,6 +237,11 @@ public abstract class AttributesGUI {
     @FXML protected BarChart<String, Number> chartPatrimony;
     @FXML protected CategoryAxis axisNameToken;
     @FXML protected NumberAxis axisMoney;
+    @FXML protected TableView<Token> tableViewLeaderBoard;
+    @FXML protected TableColumn<Token, String> leaderBoardName;
+    @FXML protected TableColumn<Token, String> leaderBoardToken;
+    @FXML protected TableColumn<Token, Integer> leaderBoardMoney;
+    @FXML protected TableColumn<Token, Integer> leaderBoardProperties;
 
     //**************************************************************************
     // Attributes
@@ -237,6 +249,7 @@ public abstract class AttributesGUI {
     protected final int TOTALMONEY = 1500;
     protected final int TRY = 10;
     protected Stage localStage;
+    protected Stage auxlocalStage;
     protected Board board;
     protected Properties auxPropertie;
     protected WildCardsThreads threadWildCards;
@@ -249,6 +262,10 @@ public abstract class AttributesGUI {
     protected PlayerProperties threadPlayerProperties;
     protected DealThreads threadsDeal;
     protected boolean valiAction = true;
+    protected ComboBoxExcepcion comboBoxExcepcion;
+    protected PlayerExcepcion playerExcepcion;
+    protected NameWinnerExcepcion nameWinnerExcepcion;
+    protected ListExcepcion listExcepcion;
     
     
    

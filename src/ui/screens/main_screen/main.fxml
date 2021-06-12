@@ -48,7 +48,7 @@
             </Reflection>
          </effect>
       </Label>
-      <Button contentDisplay="GRAPHIC_ONLY" defaultButton="true" graphicTextGap="2.0" layoutX="105.0" layoutY="268.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#mainLeave" prefHeight="60.0" prefWidth="119.0" text="Salir">
+      <Button contentDisplay="GRAPHIC_ONLY" defaultButton="true" graphicTextGap="2.0" layoutX="105.0" layoutY="331.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#mainLeave" prefHeight="60.0" prefWidth="119.0" text="Salir">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -72,5 +72,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="105.0" layoutY="260.0" mnemonicParsing="false" onAction="#readLeaderBoard" prefHeight="60.0" prefWidth="119.0" text="Tabla Clasificatoria" />
    </children>
 </Pane>
